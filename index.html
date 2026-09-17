@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoop Streamer — Transmissão Esportiva Profissional com Placar ao Vivo</title>
+  <meta name="description" content="O aplicativo definitivo para transmissão ao vivo de partidas de basquete com placar eletrônico interativo e integração direta com o YouTube.">
+  <style>
+    :root {
+      --primary: #ff6a00;
+      --primary-hover: #ea580c;
+      --bg: #090d16;
+      --card-bg: #111827;
+      --border: #1f293d;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      background: rgba(9, 13, 22, 0.9);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .nav-btn {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-btn:hover {
+      background: var(--primary-hover) !important;
+    }
+    .hero {
+      max-width: 1000px;
+      margin: 60px auto 40px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(255, 106, 0, 0.12);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 106, 0, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 40%, #fdba74 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: clamp(16px, 2vw, 19px);
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 32px auto;
+    }
+    .hero-banner {
+      max-width: 900px;
+      margin: 30px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.15s, opacity 0.2s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: linear-gradient(135deg, #ff6a00 0%, #ea580c 100%);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(255, 106, 0, 0.35);
+    }
+    .btn-secondary {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--primary);
+    }
+    .features {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .section-title p {
+      color: var(--text-muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: border-color 0.2s;
+    }
+    .card:hover {
+      border-color: rgba(255, 106, 0, 0.5);
+    }
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .about-app {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 36px 32px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .about-app h3 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: var(--primary);
+    }
+    .about-app p {
+      color: #cbd5e1;
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 80px;
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .footer-links {
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Hoop Streamer">
+      <span>Hoop Streamer</span>
+    </a>
+    <div class="nav-links">
+      <a href="#recursos">Recursos</a>
+      <a href="#sobre">Finalidade do App</a>
+      <a href="privacidade.html">Política de Privacidade</a>
+      <a href="privacidade.html" class="nav-btn">Ver Privacidade</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="tag">Aplicativo Esportivo Profissional</div>
+    <h1>Transmita Basquete ao Vivo com Placar Eletrônico Integrado</h1>
+    <p>
+      O Hoop Streamer combina câmera em alta definição, controle de placar em tempo real e integração direta com o YouTube Live para ligas esportivas, treinadores e operadores de câmera.
+    </p>
+
+    <div class="cta-group">
+      <a href="privacidade.html" class="btn btn-primary">Ler Política de Privacidade</a>
+      <a href="#sobre" class="btn btn-secondary">Sobre o Aplicativo</a>
+    </div>
+
+    <div class="hero-banner">
+      <img src="banner.png" alt="Hoop Streamer Live">
+    </div>
+  </header>
+
+  <section class="features" id="recursos">
+    <div class="section-title">
+      <h2>Recursos Construídos para Transmissão de Quadra</h2>
+      <p>Performance, estabilidade e simplicidade de operação durante os jogos.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">🏀</div>
+        <h3>Placar Dinâmico na Tela</h3>
+        <p>Pontuação ao vivo, cronômetro, período e faltas das equipes exibidos com nitidez cristalina sem atrapalhar a visão do jogo.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Controle Remoto via QR Code</h3>
+        <p>Permite que um mesário ou assistente na quadra altere o placar em tempo real pelo próprio smartphone, sem encostar na câmera.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎥</div>
+        <h3>Transmissão Full HD 60fps</h3>
+        <p>Presets otimizados de 480p até 1080p60 a 7000 Kbps com estabilização óptica (OIS) e bitrate adaptativo inteligente para evitar quedas.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔴</div>
+        <h3>Login Google & YouTube Live</h3>
+        <p>Autenticação oficial via Google OAuth. Criação automática de transmissões ao vivo no seu canal do YouTube com 1 clique no botão REC.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔋</div>
+        <h3>Economia e Proteção Térmica</h3>
+        <p>Modos inteligentes de escurecimento de tela (50% ou 95%) para economizar bateria e evitar o aquecimento do celular em partidas longas.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <h3>Privacidade Rigorosa</h3>
+        <p>Seus dados não são vendidos e suas imagens são transmitidas unicamente para a plataforma que você escolher (YouTube, RTMP próprio, etc.).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-app" id="sobre">
+    <h3>Finalidade Oficial do Aplicativo</h3>
+    <p>
+      O <strong>Hoop Streamer</strong> é uma aplicação móvel para Android desenvolvida exclusivamente para suprir a demanda de transmissões esportivas de basquetebol e outras modalidades de quadra.
+    </p>
+    <p>
+      O app utiliza as permissões de <strong>Câmera</strong> e <strong>Microfone</strong> unicamente no momento em que o usuário inicia uma transmissão ao vivo. Caso o usuário conecte sua conta Google, o aplicativo interage com a <strong>YouTube Data API v3</strong> estritamente para obter a chave de transmissão e agendar o evento de live no canal do próprio usuário.
+    </p>
+    <p>
+      Para consultar o detalhamento de como os dados são tratados e protegidos, acesse nossa <a href="privacidade.html" style="color: var(--primary); font-weight: bold;">Política de Privacidade Oficial</a>.
+    </p>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Início</a> •
+      <a href="#recursos">Recursos</a> •
+      <a href="privacidade.html">Política de Privacidade</a> •
+      <a href="mailto:jlsouza@gmail.com">Contato: jlsouza@gmail.com</a>
+    </div>
+    <p>© 2026 Hoop Streamer. Desenvolvido por JL Souza. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
