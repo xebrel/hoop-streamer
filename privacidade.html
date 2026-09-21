@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -22,7 +22,7 @@
       padding: 40px 20px;
     }
     .container {
-      max-width: 800px;
+      max-width: 850px;
       margin: 0 auto;
       background: var(--card-bg);
       padding: 48px;
@@ -113,49 +113,56 @@
   <div class="header">
     <div class="badge">Conformidade Google Play Store & YouTube API</div>
     <h1>Política de Privacidade — Hoop Streamer</h1>
-    <div class="meta">Última atualização: 17 de setembro de 2026 • Versão 1.0</div>
+    <div class="meta">Última atualização: 21 de setembro de 2026 • Versão 1.1</div>
   </div>
 
-  <p>Esta Política de Privacidade descreve de forma transparente como o aplicativo <strong>Hoop Streamer</strong> trata as informações e permissões concedidas pelo usuário ao utilizar nossa solução de transmissão esportiva ao vivo.</p>
+  <p>Esta Política de Privacidade descreve de forma transparente como o aplicativo <strong>Hoop Streamer</strong> trata as informações, dados de usuários e permissões ao utilizar nossa solução de transmissão esportiva ao vivo.</p>
 
   <div class="highlight-box">
     <strong>Compromisso de Privacidade:</strong> O Hoop Streamer NÃO vende, não aluga e não compartilha dados pessoais com terceiros ou anunciantes. O app opera com privacidade máxima e foco estrito na transmissão esportiva solicitada pelo próprio usuário.
   </div>
 
   <h2>1. Informações e Permissões Utilizadas</h2>
-  <p>Para fornecer a funcionalidade principal de gravação de vídeo e transmissão de partidas com placar em tempo real, o aplicativo necessita das seguintes permissões:</p>
+  <p>Para fornecer a funcionalidade principal de gravação de vídeo e transmissão de partidas de basquete com placar em tempo real, o aplicativo necessita das seguintes permissões:</p>
   <ul>
     <li><strong>Câmera (android.permission.CAMERA):</strong> Utilizada exclusivamente para a captura de vídeo durante transmissões ao vivo iniciadas pelo usuário. O app não transmite nem armazena imagens de câmera fora de uma sessão ativa de live.</li>
     <li><strong>Microfone (android.permission.RECORD_AUDIO):</strong> Utilizado unicamente para capturar o áudio ambiente da quadra e comentários esportivos durante a transmissão ao vivo selecionada.</li>
-    <li><strong>Acesso à Rede (INTERNET e ACCESS_NETWORK_STATE):</strong> Essencial para transmitir o sinal de vídeo e áudio via protocolo RTMP/RTMPS para a plataforma escolhida pelo usuário (como YouTube ou servidores próprios) e monitorar a qualidade da conexão para aplicar o Bitrate Adaptativo.</li>
-    <li><strong>Serviço em Primeiro Plano (FOREGROUND_SERVICE):</strong> Permite que a transmissão continue estável sem interrupções mesmo que a tela seja escurecida temporariamente para economizar bateria ou evitar aquecimento excessivo do aparelho.</li>
+    <li><strong>Acesso à Rede (INTERNET e ACCESS_NETWORK_STATE):</strong> Essencial para transmitir o sinal de vídeo e áudio via protocolo RTMP/RTMPS para o YouTube Live e monitorar a qualidade da conexão.</li>
+    <li><strong>Serviço em Primeiro Plano (FOREGROUND_SERVICE):</strong> Permite que a transmissão continue estável sem interrupções mesmo se a tela for temporariamente bloqueada para economizar bateria.</li>
   </ul>
 
-  <h2>2. Destino dos Dados e Transmissão</h2>
-  <p>O Hoop Streamer <strong>não possui servidores intermediários para retenção ou armazenamento de imagens</strong>:</p>
+  <h2>2. Autenticação Google e Escopo da API do YouTube (OAuth 2.0)</h2>
+  <p>O Hoop Streamer oferece conexão direta com o YouTube via Google OAuth 2.0:</p>
   <ul>
-    <li>Todo o fluxo audiovisual é enviado ponto-a-ponto diretamente do smartphone do usuário para os servidores de destino que o usuário configurar (como os servidores oficiais do YouTube Live).</li>
-    <li>Nenhum dado audiovisual ou de identificação é gravado em servidores próprios dos desenvolvedores.</li>
+    <li><strong>Escopo Solicitado:</strong> <code>https://www.googleapis.com/auth/youtube</code></li>
+    <li><strong>Finalidade Estrita:</strong> Criar a transmissão ao vivo na conta do usuário (<code>liveBroadcasts.insert</code> e <code>liveStreams.insert</code>), vincular a chave de stream (<code>liveBroadcasts.bind</code>) e transicionar o status da transmissão para ao vivo e finalizado (<code>liveBroadcasts.transition</code>).</li>
+    <li><strong>Uso Limitado (Limited Use):</strong> O uso de informações recebidas das APIs do Google pelo Hoop Streamer adere estritamente à <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" style="color:var(--primary);">Google API Services User Data Policy</a>, incluindo os requisitos de Limited Use. Não utilizamos dados para publicidade nem transferimos para terceiros.</li>
+    <li><strong>Nenhum modelo de Inteligência Artificial ou Aprendizado de Máquina (AI/ML)</strong> é treinado utilizando dados de usuários do Google.</li>
   </ul>
 
-  <h2>3. Autenticação Google e YouTube Data API (OAuth 2.0)</h2>
-  <p>O Hoop Streamer oferece aos usuários a opção de conexão facilitada com o YouTube via Google OAuth 2.0:</p>
+  <h2>3. Retenção e Armazenamento de Dados (Data Retention)</h2>
+  <p>O Hoop Streamer opera sob o princípio de retenção mínima de dados:</p>
   <ul>
-    <li>A autenticação é feita diretamente no ambiente seguro do Google (OAuth 2.0).</li>
-    <li>O aplicativo solicita unicamente os escopos estritamente necessários para listar e criar os eventos de transmissão ao vivo autorizados pelo usuário na sua conta do YouTube.</li>
-    <li>O uso e a transferência de informações recebidas de qualquer API do Google para o Hoop Streamer estão em estrita conformidade com a <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" style="color:var(--primary);">Google API Services User Data Policy</a>, incluindo os requisitos de Uso Limitado (Limited Use Requirements).</li>
-    <li>Nenhuma senha ou credencial de acesso do usuário é armazenada ou visível para os criadores do aplicativo.</li>
+    <li><strong>Sem Servidores Externos de Dados:</strong> O Hoop Streamer não mantém servidores intermediários próprios ou banco de dados em nuvem para reter informações pessoais, e-mails, vídeos ou senhas dos usuários.</li>
+    <li><strong>Tokens de Acesso OAuth Temporários:</strong> O token de autorização fornecido pelo Google OAuth 2.0 é mantido de forma restrita e temporária na memória protegida do próprio smartphone (via armazenamento seguro do sistema operacional Android) estritamente durante o tempo necessário para gerenciar a transmissão ativa.</li>
+    <li><strong>Dados Locais de Configuração:</strong> As preferências do placar (como nomes dos times, cores e placar da partida) ficam guardadas exclusivamente no dispositivo local do usuário.</li>
   </ul>
 
-  <h2>4. Armazenamento Local no Aparelho</h2>
-  <p>Informações de preferência do usuário (como nomes das equipes no placar, pontuação, cores e resolução padrão de gravação) são salvas exclusivamente na memória interna do próprio celular para facilidade de uso em jogos futuros.</p>
+  <h2>4. Exclusão e Revogação de Dados (Data Deletion)</h2>
+  <p>Os usuários possuem controle total e imediato sobre seus dados e autorizações:</p>
+  <ul>
+    <li><strong>Desconexão no Aplicativo:</strong> O usuário pode a qualquer momento clicar em desconectar sua conta Google dentro do aplicativo. Esta ação remove e purga imediatamente todos os tokens de acesso armazenados no dispositivo.</li>
+    <li><strong>Revogação de Acesso via Google:</strong> O usuário pode revogar o acesso do Hoop Streamer a qualquer momento diretamente no painel de segurança da sua Conta Google acessando <a href="https://myaccount.google.com/permissions" target="_blank" style="color:var(--primary);">Gerenciar Permissões da Conta Google</a>. Ao revogar o acesso, o aplicativo perde imediatamente qualquer capacidade de comunicação com o canal do YouTube.</li>
+    <li><strong>Exclusão Completa pelo Dispositivo:</strong> Ao desinstalar o aplicativo Hoop Streamer ou limpar o armazenamento nas configurações do Android ("Limpar Dados"), todos os arquivos e identificadores locais são permanentemente eliminados.</li>
+    <li><strong>Solicitação de Exclusão Direta:</strong> Como o Hoop Streamer não armazena dados em servidores externos, não há registros retidos para exclusão remota. No entanto, qualquer solicitação ou esclarecimento pode ser feito a qualquer momento através do e-mail do desenvolvedor.</li>
+  </ul>
 
   <h2>5. Segurança e Conformidade</h2>
-  <p>O aplicativo adota comunicação segura criptografada (HTTPS e RTMPS) e compilação em conformidade com as exigências técnicas da Google Play Store (Target SDK 34 / Android 14) e do Google Play Protect.</p>
+  <p>O aplicativo adota comunicação segura criptografada (HTTPS e RTMPS) e compilação em estrita conformidade com as diretrizes da Google Play Store (Target SDK 34 / Android 14) e do Google Play Protect.</p>
 
   <h2>6. Contato com o Desenvolvedor</h2>
-  <p>Para dúvidas, esclarecimentos adicionais ou solicitações referentes à sua privacidade ou ao aplicativo Hoop Streamer, entre em contato diretamente pelo e-mail oficial do desenvolvedor:</p>
-  <p style="margin-top: 8px;"><strong>E-mail de Suporte:</strong> <a href="mailto:jlsouza@gmail.com" style="color:var(--primary);">jlsouza@gmail.com</a></p>
+  <p>Para dúvidas adicionais ou solicitações referentes à sua privacidade ou ao aplicativo Hoop Streamer, entre em contato diretamente pelo e-mail oficial:</p>
+  <p style="margin-top: 8px;"><strong>E-mail do Desenvolvedor:</strong> <a href="mailto:jlsouza@gmail.com" style="color:var(--primary);">jlsouza@gmail.com</a></p>
 
   <div class="footer">
     <a href="index.html">← Retornar à Página Principal</a><br><br>
