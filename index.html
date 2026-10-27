@@ -47,7 +47,7 @@
       "@type": "Person",
       "name": "JL Souza"
     },
-    "installUrl": "https://play.google.com/store/apps/details?id=com.ehbarato.hoopstreamer"
+    "installUrl": "https://play.google.com/store/apps/details?id=com.hoopstreamer.app"
   }
   </script>
 
@@ -365,7 +365,7 @@
 
     <div class="cta-group">
       <!-- Botão Oficial Google Play -->
-      <a href="https://play.google.com/store/apps/details?id=com.ehbarato.hoopstreamer" target="_blank" rel="noopener noreferrer" class="btn btn-play">
+      <a href="https://play.google.com/store/apps/details?id=com.hoopstreamer.app" target="_blank" rel="noopener noreferrer" class="btn btn-play">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M3.609 1.814L13.793 12 3.61 22.186a2.38 2.38 0 0 1-.61-.918c-.147-.394-.223-.812-.223-1.233V3.965c0-.421.076-.839.223-1.233.13-.35.342-.667.61-.918zm11.3 11.303l2.673-2.673-10.74-6.2a1.867 1.867 0 0 0-.825-.213l8.892 9.086zm0 1.766L6.017 23.97a1.867 1.867 0 0 0 .825-.213l10.74-6.2-2.673-2.674zm1.414-1.414l3.205 1.85c1.077.622 1.077 1.637 0 2.259l-3.205 1.85-2.083-2.083 2.083-2.083z"/>
         </svg>
@@ -653,28 +653,39 @@
     }
 
     // Auto-detectar idioma do navegador do visitante
+    // Detecção Inteligente de Idioma (Padrão: Português)
     window.addEventListener('DOMContentLoaded', () => {
       let saved = null;
       try { saved = localStorage.getItem('hoop_lang'); } catch (e) {}
       
+      // Se o usuário já escolheu manualmente antes, respeita a escolha dele
       if (saved && translations[saved]) {
         document.getElementById('langSelect').value = saved;
         changeLanguage(saved);
         return;
       }
 
-      const browserLang = (navigator.language || navigator.userLanguage || 'pt').toLowerCase();
-      let targetLang = 'pt';
-      if (browserLang.startsWith('en')) targetLang = 'en';
-      else if (browserLang.startsWith('es')) targetLang = 'es';
-      else if (browserLang.startsWith('fr')) targetLang = 'fr';
-      else if (browserLang.startsWith('de')) targetLang = 'de';
-      else if (browserLang.startsWith('zh')) targetLang = 'zh';
-
-      if (targetLang !== 'pt') {
-        document.getElementById('langSelect').value = targetLang;
-        changeLanguage(targetLang);
+      // Se o navegador tem qualquer configuração em Português, mantém Português como padrão
+      const languages = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || 'pt'];
+      const hasPt = Array.from(languages).some(l => l.toLowerCase().startsWith('pt'));
+      
+      if (hasPt) {
+        document.getElementById('langSelect').value = 'pt';
+        changeLanguage('pt');
+        return;
       }
+
+      // Se for estritamente um usuário internacional sem vínculo com português:
+      const primary = languages[0].toLowerCase();
+      let targetLang = 'pt';
+      if (primary.startsWith('es')) targetLang = 'es';
+      else if (primary.startsWith('fr')) targetLang = 'fr';
+      else if (primary.startsWith('de')) targetLang = 'de';
+      else if (primary.startsWith('zh')) targetLang = 'zh';
+      else if (primary.startsWith('en')) targetLang = 'en';
+
+      document.getElementById('langSelect').value = targetLang;
+      changeLanguage(targetLang);
     });
   </script>
 
