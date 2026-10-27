@@ -215,14 +215,40 @@
       color: #fff !important;
       border: 1px solid #374151;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      padding: 10px 24px;
     }
     .btn-play:hover {
       border-color: #60a5fa;
       box-shadow: 0 4px 25px rgba(96, 165, 250, 0.25);
     }
-    .btn-play svg {
-      width: 22px;
-      height: 22px;
+    .play-badge-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+    .play-badge-content svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+    .play-badge-texts {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .play-badge-sub {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #cbd5e1;
+    }
+    .play-badge-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #ffffff;
     }
     .btn-primary {
       background: linear-gradient(135deg, #ff6a00 0%, #ea580c 100%);
@@ -364,12 +390,20 @@
     </p>
 
     <div class="cta-group">
-      <!-- Botão Oficial Google Play -->
-      <a href="https://play.google.com/store/apps/details?id=com.hoopstreamer.pro" target="_blank" rel="noopener noreferrer" class="btn btn-play">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M3.609 1.814L13.793 12 3.61 22.186a2.38 2.38 0 0 1-.61-.918c-.147-.394-.223-.812-.223-1.233V3.965c0-.421.076-.839.223-1.233.13-.35.342-.667.61-.918zm11.3 11.303l2.673-2.673-10.74-6.2a1.867 1.867 0 0 0-.825-.213l8.892 9.086zm0 1.766L6.017 23.97a1.867 1.867 0 0 0 .825-.213l10.74-6.2-2.673-2.674zm1.414-1.414l3.205 1.85c1.077.622 1.077 1.637 0 2.259l-3.205 1.85-2.083-2.083 2.083-2.083z"/>
-        </svg>
-        <span data-i18n="btn_google_play">Baixar no Google Play</span>
+      <!-- Botão Oficial Google Play Estilo Loja com Logo Colorido -->
+      <a href="https://play.google.com/store/apps/details?id=com.hoopstreamer.pro" target="_blank" rel="noopener noreferrer" class="btn btn-play" title="Baixar Hoop Streamer no Google Play">
+        <div class="play-badge-content">
+          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
+            <path d="M47 36.3C38.3 45.4 33 58.7 33 74.8v362.4c0 16.1 5.3 29.4 14 38.5l4.5 4.3 203.2-203.2v-4.8L51.5 32l-4.5 4.3z" fill="#4285f4"/>
+            <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
+            <path d="M468.9 237.3l-83.5-48-60.1 60.1 60.1 60.1 83.5-48c15.1-8.7 15.1-25.5 0-34.2z" fill="#fbbc04"/>
+          </svg>
+          <div class="play-badge-texts">
+            <span class="play-badge-sub" data-i18n="badge_sub">DISPONÍVEL NO</span>
+            <span class="play-badge-title">Google Play</span>
+          </div>
+        </div>
       </a>
 
       <a href="privacidade.html" class="btn btn-secondary" data-i18n="btn_privacy">Política de Privacidade</a>
@@ -453,6 +487,7 @@
   <script>
     const translations = {
       pt: {
+        badge_sub: "DISPONÍVEL NO",
         nav_features: "Recursos",
         nav_about: "Finalidade do App",
         nav_privacy: "Política de Privacidade",
@@ -483,6 +518,7 @@
         footer_home: "Início"
       },
       en: {
+        badge_sub: "GET IT ON",
         nav_features: "Features",
         nav_about: "About the App",
         nav_privacy: "Privacy Policy",
@@ -513,6 +549,7 @@
         footer_home: "Home"
       },
       es: {
+        badge_sub: "DISPONIBLE EN",
         nav_features: "Características",
         nav_about: "Acerca de la App",
         nav_privacy: "Política de Privacidad",
@@ -543,6 +580,7 @@
         footer_home: "Inicio"
       },
       fr: {
+        badge_sub: "DISPONIBLE SUR",
         nav_features: "Fonctionnalités",
         nav_about: "À propos",
         nav_privacy: "Confidentialité",
@@ -573,6 +611,7 @@
         footer_home: "Accueil"
       },
       de: {
+        badge_sub: "JETZT BEI",
         nav_features: "Funktionen",
         nav_about: "Über die App",
         nav_privacy: "Datenschutz",
@@ -603,6 +642,7 @@
         footer_home: "Startseite"
       },
       zh: {
+        badge_sub: "前往",
         nav_features: "核心功能",
         nav_about: "关于应用",
         nav_privacy: "隐私政策",
@@ -653,36 +693,38 @@
     }
 
     // Auto-detectar idioma do navegador do visitante
-    // Detecção Inteligente de Idioma (Padrão: Português)
+    // Detecção Inteligente de Idioma (Padrão Oficial: Português)
     window.addEventListener('DOMContentLoaded', () => {
       let saved = null;
       try { saved = localStorage.getItem('hoop_lang'); } catch (e) {}
       
-      // Se o usuário já escolheu manualmente antes, respeita a escolha dele
-      if (saved && translations[saved]) {
+      // Se o usuário selecionou um idioma MANUALMENTE no seletor (e não foi gravado por script antigo), respeitamos
+      // Mas para garantir que ninguém fique preso em cache antigo de inglês no primeiro acesso:
+      if (saved && translations[saved] && saved !== 'en') {
         document.getElementById('langSelect').value = saved;
         changeLanguage(saved);
         return;
       }
 
-      // Se o navegador tem qualquer configuração em Português, mantém Português como padrão
+      // Por padrão, sempre inicia em Português
+      let targetLang = 'pt';
+
+      // Verifica se o navegador do visitante é estritamente de fora
       const languages = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || 'pt'];
       const hasPt = Array.from(languages).some(l => l.toLowerCase().startsWith('pt'));
-      
-      if (hasPt) {
-        document.getElementById('langSelect').value = 'pt';
-        changeLanguage('pt');
-        return;
-      }
 
-      // Se for estritamente um usuário internacional sem vínculo com português:
-      const primary = languages[0].toLowerCase();
-      let targetLang = 'pt';
-      if (primary.startsWith('es')) targetLang = 'es';
-      else if (primary.startsWith('fr')) targetLang = 'fr';
-      else if (primary.startsWith('de')) targetLang = 'de';
-      else if (primary.startsWith('zh')) targetLang = 'zh';
-      else if (primary.startsWith('en')) targetLang = 'en';
+      if (!hasPt) {
+        const primary = (languages[0] || '').toLowerCase();
+        if (primary.startsWith('es')) targetLang = 'es';
+        else if (primary.startsWith('fr')) targetLang = 'fr';
+        else if (primary.startsWith('de')) targetLang = 'de';
+        else if (primary.startsWith('zh')) targetLang = 'zh';
+        else if (primary.startsWith('en')) {
+          // Se o usuário salvou explicitamente inglês
+          if (saved === 'en') targetLang = 'en';
+          else targetLang = 'pt'; // Preferência padrão do site nacional
+        }
+      }
 
       document.getElementById('langSelect').value = targetLang;
       changeLanguage(targetLang);
