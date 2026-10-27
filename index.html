@@ -210,45 +210,23 @@
       transition: transform 0.15s, opacity 0.2s, box-shadow 0.2s;
     }
     .btn:active { transform: scale(0.98); }
-    .btn-play {
-      background: #000;
-      color: #fff !important;
-      border: 1px solid #374151;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      padding: 10px 24px;
-    }
-    .btn-play:hover {
-      border-color: #60a5fa;
-      box-shadow: 0 4px 25px rgba(96, 165, 250, 0.25);
-    }
-    .play-badge-content {
-      display: flex;
+    .btn-play-badge {
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      text-align: left;
+      transition: transform 0.15s ease, opacity 0.2s ease, filter 0.2s ease;
+      line-height: 0;
     }
-    .play-badge-content svg {
-      width: 28px;
-      height: 28px;
-      flex-shrink: 0;
+    .btn-play-badge:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
     }
-    .play-badge-texts {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.15;
+    .btn-play-badge:active {
+      transform: scale(0.97);
     }
-    .play-badge-sub {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: #cbd5e1;
-    }
-    .play-badge-title {
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      color: #ffffff;
+    .btn-play-badge img {
+      height: 54px;
+      width: auto;
+      display: block;
     }
     .btn-primary {
       background: linear-gradient(135deg, #ff6a00 0%, #ea580c 100%);
@@ -390,20 +368,9 @@
     </p>
 
     <div class="cta-group">
-      <!-- Botão Oficial Google Play Estilo Loja com Logo Colorido -->
-      <a href="https://play.google.com/store/apps/details?id=com.hoopstreamer.pro" target="_blank" rel="noopener noreferrer" class="btn btn-play" title="Baixar Hoop Streamer no Google Play">
-        <div class="play-badge-content">
-          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-            <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
-            <path d="M47 36.3C38.3 45.4 33 58.7 33 74.8v362.4c0 16.1 5.3 29.4 14 38.5l4.5 4.3 203.2-203.2v-4.8L51.5 32l-4.5 4.3z" fill="#4285f4"/>
-            <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
-            <path d="M468.9 237.3l-83.5-48-60.1 60.1 60.1 60.1 83.5-48c15.1-8.7 15.1-25.5 0-34.2z" fill="#fbbc04"/>
-          </svg>
-          <div class="play-badge-texts">
-            <span class="play-badge-sub" data-i18n="badge_sub">DISPONÍVEL NO</span>
-            <span class="play-badge-title">Google Play</span>
-          </div>
-        </div>
+      <!-- Selo Oficial Oficial do Google Play (Imagem Original da Loja) -->
+      <a href="https://play.google.com/store/apps/details?id=com.hoopstreamer.pro" target="_blank" rel="noopener noreferrer" class="btn-play-badge" title="Disponível no Google Play">
+        <img id="playBadgeImg" src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play">
       </a>
 
       <a href="privacidade.html" class="btn btn-secondary" data-i18n="btn_privacy">Política de Privacidade</a>
@@ -674,6 +641,15 @@
       }
     };
 
+    const badgeImages = {
+      pt: "https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png",
+      en: "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+      es: "https://play.google.com/intl/en_us/badges/static/images/badges/es-419_badge_web_generic.png",
+      fr: "https://play.google.com/intl/en_us/badges/static/images/badges/fr_badge_web_generic.png",
+      de: "https://play.google.com/intl/en_us/badges/static/images/badges/de_badge_web_generic.png",
+      zh: "https://play.google.com/intl/en_us/badges/static/images/badges/zh-cn_badge_web_generic.png"
+    };
+
     function changeLanguage(lang) {
       const data = translations[lang];
       if (!data) return;
@@ -684,6 +660,12 @@
           el.textContent = data[key];
         }
       });
+
+      // Atualiza o selo oficial do Google Play com a imagem oficial do Google
+      const badgeImg = document.getElementById('playBadgeImg');
+      if (badgeImg && badgeImages[lang]) {
+        badgeImg.src = badgeImages[lang];
+      }
 
       // Atualiza o atributo lang do HTML
       document.documentElement.lang = lang === 'pt' ? 'pt-BR' : (lang === 'zh' ? 'zh-CN' : lang);
