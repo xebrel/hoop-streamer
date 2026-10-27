@@ -1,10 +1,56 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hoop Streamer</title>
-  <meta name="description" content="Hoop Streamer — O aplicativo definitivo para transmissão ao vivo de partidas esportivas e basquete com placar eletrônico integrado.">
+  <title>Hoop Streamer — Placar ao Vivo & Transmissão Esportiva RTMP</title>
+  
+  <!-- SEO Primary Meta Tags -->
+  <meta name="title" content="Hoop Streamer — Placar ao Vivo & Transmissão Esportiva RTMP">
+  <meta name="description" content="Hoop Streamer é o aplicativo definitivo para transmissão de basquete e esportes ao vivo com placar eletrônico profissional, 24s shot clock e controle remoto sem fio via QR Code.">
+  <meta name="keywords" content="placar ao vivo, basquete transmissao, shot clock, placar eletronico, live scoreboard, rtmp stream, youtube live basketball, transmissão esportiva">
+  <meta name="author" content="JL Souza">
+  <link rel="canonical" href="https://hoop.ehbarato.com.br/">
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hoop.ehbarato.com.br/">
+  <meta property="og:title" content="Hoop Streamer — Placar ao Vivo & Transmissão Esportiva">
+  <meta property="og:description" content="Transmita jogos de basquete com placar em tempo real na tela, posse de bola de 24s e controle remoto via QR Code. Disponível no Google Play.">
+  <meta property="og:image" content="https://hoop.ehbarato.com.br/banner.png">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://hoop.ehbarato.com.br/">
+  <meta name="twitter:title" content="Hoop Streamer — Placar ao Vivo & Transmissão Esportiva">
+  <meta name="twitter:description" content="Transmita partidas esportivas com qualidade Full HD e placar digital integrado.">
+  <meta name="twitter:image" content="https://hoop.ehbarato.com.br/banner.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Schema.org JSON-LD for Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Hoop Streamer",
+    "operatingSystem": "Android",
+    "applicationCategory": "SportsApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Aplicativo para transmissão ao vivo de basquete e esportes com placar digital, shot clock de 24s e controle remoto integrado.",
+    "author": {
+      "@type": "Person",
+      "name": "JL Souza"
+    },
+    "installUrl": "https://play.google.com/store/apps/details?id=com.ehbarato.hoopstreamer"
+  }
+  </script>
+
   <style>
     :root {
       --primary: #ff6a00;
@@ -16,6 +62,7 @@
       --text-muted: #94a3b8;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg);
@@ -26,13 +73,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 32px;
+      padding: 14px 28px;
       background: rgba(9, 13, 22, 0.95);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       backdrop-filter: blur(12px);
       z-index: 100;
+      flex-wrap: wrap;
+      gap: 12px;
     }
     .brand {
       display: flex;
@@ -51,8 +100,9 @@
     }
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       align-items: center;
+      flex-wrap: wrap;
     }
     .nav-links a {
       color: var(--text-muted);
@@ -64,20 +114,34 @@
     .nav-links a:hover {
       color: var(--primary);
     }
-    .nav-btn {
-      background: var(--primary);
-      color: #fff !important;
-      padding: 8px 18px;
+    
+    /* Seletor de Idioma */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
       border-radius: 8px;
-      font-weight: 600 !important;
-      transition: background 0.2s !important;
+      padding: 4px 8px;
+      gap: 6px;
     }
-    .nav-btn:hover {
-      background: var(--primary-hover) !important;
+    .lang-switcher select {
+      background: transparent;
+      color: var(--text);
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
     }
+    .lang-switcher select option {
+      background: var(--card-bg);
+      color: var(--text);
+    }
+
     .hero {
       max-width: 1000px;
-      margin: 50px auto 40px auto;
+      margin: 45px auto 30px auto;
       padding: 0 24px;
       text-align: center;
     }
@@ -95,7 +159,7 @@
       letter-spacing: 1px;
     }
     .hero h1 {
-      font-size: clamp(40px, 6vw, 64px);
+      font-size: clamp(38px, 5.5vw, 62px);
       font-weight: 900;
       line-height: 1.1;
       margin-bottom: 16px;
@@ -132,33 +196,51 @@
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       padding: 14px 28px;
       border-radius: 12px;
       font-size: 15px;
       font-weight: 700;
       text-decoration: none;
-      transition: transform 0.15s, opacity 0.2s;
+      transition: transform 0.15s, opacity 0.2s, box-shadow 0.2s;
     }
     .btn:active { transform: scale(0.98); }
+    .btn-play {
+      background: #000;
+      color: #fff !important;
+      border: 1px solid #374151;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .btn-play:hover {
+      border-color: #60a5fa;
+      box-shadow: 0 4px 25px rgba(96, 165, 250, 0.25);
+    }
+    .btn-play svg {
+      width: 22px;
+      height: 22px;
+    }
     .btn-primary {
       background: linear-gradient(135deg, #ff6a00 0%, #ea580c 100%);
-      color: #fff;
+      color: #fff !important;
       box-shadow: 0 4px 20px rgba(255, 106, 0, 0.35);
+    }
+    .btn-primary:hover {
+      opacity: 0.95;
     }
     .btn-secondary {
       background: var(--card-bg);
-      color: var(--text);
+      color: var(--text) !important;
       border: 1px solid var(--border);
     }
     .btn-secondary:hover {
       border-color: var(--primary);
     }
+
     .features {
       max-width: 1100px;
       margin: 60px auto;
@@ -186,10 +268,11 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 28px;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, transform 0.2s;
     }
     .card:hover {
       border-color: rgba(255, 106, 0, 0.5);
+      transform: translateY(-2px);
     }
     .card-icon {
       font-size: 28px;
@@ -253,24 +336,43 @@
       <span>Hoop Streamer</span>
     </a>
     <div class="nav-links">
-      <a href="#recursos">Recursos</a>
-      <a href="#sobre">Finalidade do App</a>
-      <a href="privacidade.html">Política de Privacidade</a>
-      <a href="privacidade.html" class="nav-btn">Ver Privacidade</a>
+      <a href="#recursos" data-i18n="nav_features">Recursos</a>
+      <a href="#sobre" data-i18n="nav_about">Finalidade do App</a>
+      <a href="privacidade.html" data-i18n="nav_privacy">Política de Privacidade</a>
+      
+      <!-- Seletor Multilíngue -->
+      <div class="lang-switcher">
+        <span>🌐</span>
+        <select id="langSelect" onchange="changeLanguage(this.value)" aria-label="Selecionar Idioma">
+          <option value="pt" selected>Português</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
     </div>
   </nav>
 
   <header class="hero">
-    <div class="hero-badge">Aplicativo Oficial</div>
+    <div class="hero-badge" data-i18n="hero_badge">Aplicativo Oficial</div>
     <h1>Hoop Streamer</h1>
-    <h2>Transmissão Esportiva Profissional com Placar ao Vivo</h2>
-    <p>
-      O <strong>Hoop Streamer</strong> é a aplicação móvel completa para transmissão ao vivo de partidas de basquete e esportes de quadra, com placar dinâmico integrado, controle remoto sem fio via QR Code e integração direta com o YouTube Live.
+    <h2 data-i18n="hero_subtitle">Transmissão Esportiva Profissional com Placar ao Vivo</h2>
+    <p data-i18n="hero_desc">
+      O <strong>Hoop Streamer</strong> é a aplicação móvel completa para transmissão ao vivo de partidas de basquete e esportes de quadra, com placar dinâmico integrado, controle remoto sem fio via QR Code e integração direta com o YouTube Live e RTMP.
     </p>
 
     <div class="cta-group">
-      <a href="privacidade.html" class="btn btn-primary">Política de Privacidade Oficial</a>
-      <a href="#sobre" class="btn btn-secondary">Sobre o Hoop Streamer</a>
+      <!-- Botão Oficial Google Play -->
+      <a href="https://play.google.com/store/apps/details?id=com.ehbarato.hoopstreamer" target="_blank" rel="noopener noreferrer" class="btn btn-play">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3.609 1.814L13.793 12 3.61 22.186a2.38 2.38 0 0 1-.61-.918c-.147-.394-.223-.812-.223-1.233V3.965c0-.421.076-.839.223-1.233.13-.35.342-.667.61-.918zm11.3 11.303l2.673-2.673-10.74-6.2a1.867 1.867 0 0 0-.825-.213l8.892 9.086zm0 1.766L6.017 23.97a1.867 1.867 0 0 0 .825-.213l10.74-6.2-2.673-2.674zm1.414-1.414l3.205 1.85c1.077.622 1.077 1.637 0 2.259l-3.205 1.85-2.083-2.083 2.083-2.083z"/>
+        </svg>
+        <span data-i18n="btn_google_play">Baixar no Google Play</span>
+      </a>
+
+      <a href="privacidade.html" class="btn btn-secondary" data-i18n="btn_privacy">Política de Privacidade</a>
     </div>
 
     <div class="hero-banner">
@@ -280,71 +382,301 @@
 
   <section class="features" id="recursos">
     <div class="section-title">
-      <h3>Recursos do Aplicativo Hoop Streamer</h3>
-      <p>Desenvolvido para oferecer máxima qualidade e estabilidade em transmissões de quadra.</p>
+      <h3 data-i18n="feat_title">Recursos do Aplicativo Hoop Streamer</h3>
+      <p data-i18n="feat_subtitle">Desenvolvido para oferecer máxima qualidade e estabilidade em transmissões de quadra.</p>
     </div>
 
     <div class="grid">
       <div class="card">
         <div class="card-icon">🏀</div>
-        <h4>Placar ao Vivo na Tela</h4>
-        <p>Pontuação em tempo real, tempo de partida, período e faltas das equipes com exibição nítida.</p>
+        <h4 data-i18n="card1_title">Placar ao Vivo na Tela</h4>
+        <p data-i18n="card1_desc">Pontuação em tempo real, tempo de partida, período e faltas das equipes com exibição nítida.</p>
       </div>
 
       <div class="card">
         <div class="card-icon">📱</div>
-        <h4>Controle Remoto via QR Code</h4>
-        <p>Controle o placar à distância pelo smartphone de qualquer assistente sem mexer na câmera.</p>
+        <h4 data-i18n="card2_title">Controle Remoto via QR Code</h4>
+        <p data-i18n="card2_desc">Controle o placar à distância pelo smartphone de qualquer assistente sem mexer na câmera.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⏱️</div>
+        <h4 data-i18n="card3_title">Shot Clock Oficial (24s / 14s)</h4>
+        <p data-i18n="card3_desc">Cronômetro de posse de bola integrado com reset rápido para basquete profissional.</p>
       </div>
 
       <div class="card">
         <div class="card-icon">🎥</div>
-        <h4>Vídeo Full HD 60fps & ABR</h4>
-        <p>Qualidade de até 1080p60 a 7000 Kbps com Bitrate Adaptativo e estabilização de imagem nativa.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🔴</div>
-        <h4>Login Oficial YouTube (Google OAuth)</h4>
-        <p>Criação e início de transmissões ao vivo direto no canal do YouTube com 1 toque no botão REC.</p>
+        <h4 data-i18n="card4_title">Vídeo Full HD 60fps & ABR</h4>
+        <p data-i18n="card4_desc">Qualidade de até 1080p60 com Bitrate Adaptativo e transmissão direta via protocolo RTMP.</p>
       </div>
 
       <div class="card">
         <div class="card-icon">🔋</div>
-        <h4>Modo Economia Térmica</h4>
-        <p>Escurecimento de tela em 50% ou 95% para preservar a bateria e a temperatura do aparelho.</p>
+        <h4 data-i18n="card5_title">Modo Economia Térmica</h4>
+        <p data-i18n="card5_desc">Escurecimento de tela em 50% ou 95% para preservar a bateria e a temperatura do aparelho.</p>
       </div>
 
       <div class="card">
         <div class="card-icon">🛡️</div>
-        <h4>Segurança e Privacidade</h4>
-        <p>Total conformidade com as diretrizes do Google Play Protect e Google API Services User Data Policy.</p>
+        <h4 data-i18n="card6_title">Segurança e Privacidade</h4>
+        <p data-i18n="card6_desc">Total conformidade com as diretrizes do Google Play Protect e Google API Services.</p>
       </div>
     </div>
   </section>
 
   <section class="about-app" id="sobre">
-    <h3>Finalidade do Aplicativo Hoop Streamer</h3>
-    <p>
+    <h3 data-i18n="about_title">Finalidade do Aplicativo Hoop Streamer</h3>
+    <p data-i18n="about_p1">
       O aplicativo <strong>Hoop Streamer</strong> foi concebido para atender cinegrafistas, clubes esportivos, ligas de basquete e criadores de conteúdo que realizam coberturas de jogos ao vivo.
     </p>
-    <p>
-      O aplicativo requer acesso à <strong>Câmera</strong> e ao <strong>Microfone</strong> unicamente quando o usuário aciona a gravação e transmissão de uma partida. A integração com a <strong>YouTube Data API v3</strong> serve única e exclusivamente para obter a chave de transmissão do usuário e programar o evento no canal autorizado pelo mesmo.
+    <p data-i18n="about_p2">
+      O aplicativo requer acesso à <strong>Câmera</strong> e ao <strong>Microfone</strong> unicamente quando o usuário aciona a gravação e transmissão de uma partida. A integração com o YouTube serve única e exclusivamente para obter a chave de transmissão do usuário e programar o evento no canal autorizado pelo mesmo.
     </p>
     <p>
-      Para mais informações sobre a segurança dos seus dados, acesse a nossa <a href="privacidade.html" style="color: var(--primary); font-weight: bold;">Política de Privacidade Oficial do Hoop Streamer</a>.
+      <span data-i18n="about_p3">Para mais informações sobre a segurança dos seus dados, acesse a nossa</span> 
+      <a href="privacidade.html" style="color: var(--primary); font-weight: bold;" data-i18n="about_link">Política de Privacidade Oficial do Hoop Streamer</a>.
     </p>
   </section>
 
   <footer>
     <div class="footer-links">
-      <a href="index.html">Início</a> •
-      <a href="#recursos">Recursos</a> •
-      <a href="privacidade.html">Política de Privacidade</a> •
+      <a href="index.html" data-i18n="footer_home">Início</a> •
+      <a href="#recursos" data-i18n="nav_features">Recursos</a> •
+      <a href="privacidade.html" data-i18n="nav_privacy">Política de Privacidade</a> •
       <a href="mailto:jlsouza@gmail.com">Contato: jlsouza@gmail.com</a>
     </div>
     <p>© 2026 Hoop Streamer. Desenvolvido por JL Souza. Todos os direitos reservados.</p>
   </footer>
+
+  <!-- Dicionário Multilíngue Instantâneo -->
+  <script>
+    const translations = {
+      pt: {
+        nav_features: "Recursos",
+        nav_about: "Finalidade do App",
+        nav_privacy: "Política de Privacidade",
+        hero_badge: "Aplicativo Oficial",
+        hero_subtitle: "Transmissão Esportiva Profissional com Placar ao Vivo",
+        hero_desc: "O Hoop Streamer é a aplicação móvel completa para transmissão ao vivo de partidas de basquete e esportes de quadra, com placar dinâmico integrado, controle remoto sem fio via QR Code e integração direta com o YouTube Live e RTMP.",
+        btn_google_play: "Disponível no Google Play",
+        btn_privacy: "Política de Privacidade",
+        feat_title: "Recursos do Aplicativo Hoop Streamer",
+        feat_subtitle: "Desenvolvido para oferecer máxima qualidade e estabilidade em transmissões de quadra.",
+        card1_title: "Placar ao Vivo na Tela",
+        card1_desc: "Pontuação em tempo real, tempo de partida, período e faltas das equipes com exibição nítida.",
+        card2_title: "Controle Remoto via QR Code",
+        card2_desc: "Controle o placar à distância pelo smartphone de qualquer assistente sem mexer na câmera.",
+        card3_title: "Shot Clock Oficial (24s / 14s)",
+        card3_desc: "Cronômetro de posse de bola integrado com reset rápido para basquete profissional.",
+        card4_title: "Vídeo Full HD 60fps & ABR",
+        card4_desc: "Qualidade de até 1080p60 com Bitrate Adaptativo e transmissão direta via protocolo RTMP.",
+        card5_title: "Modo Economia Térmica",
+        card5_desc: "Escurecimento de tela em 50% ou 95% para preservar a bateria e a temperatura do aparelho.",
+        card6_title: "Segurança e Privacidade",
+        card6_desc: "Total conformidade com as diretrizes do Google Play Protect e Google API Services.",
+        about_title: "Finalidade do Aplicativo Hoop Streamer",
+        about_p1: "O aplicativo Hoop Streamer foi concebido para atender cinegrafistas, clubes esportivos, ligas de basquete e criadores de conteúdo que realizam coberturas de jogos ao vivo.",
+        about_p2: "O aplicativo requer acesso à Câmera e ao Microfone unicamente quando o usuário aciona a gravação e transmissão de uma partida. A integração com o YouTube serve única e exclusivamente para obter a chave de transmissão do usuário e programar o evento no canal autorizado pelo mesmo.",
+        about_p3: "Para mais informações sobre a segurança dos seus dados, acesse a nossa",
+        about_link: "Política de Privacidade Oficial do Hoop Streamer",
+        footer_home: "Início"
+      },
+      en: {
+        nav_features: "Features",
+        nav_about: "About the App",
+        nav_privacy: "Privacy Policy",
+        hero_badge: "Official Application",
+        hero_subtitle: "Professional Sports Streaming with Live Scoreboard",
+        hero_desc: "Hoop Streamer is the complete mobile solution for live basketball and court sports broadcasting, featuring real-time custom scoreboard overlays, wireless QR Code remote control, and direct RTMP/YouTube streaming.",
+        btn_google_play: "Get it on Google Play",
+        btn_privacy: "Privacy Policy",
+        feat_title: "Hoop Streamer Key Features",
+        feat_subtitle: "Engineered for maximum video stability and professional court-side broadcasting.",
+        card1_title: "Live On-Screen Scoreboard",
+        card1_desc: "Real-time points, game clock, quarters, team fouls, and timeouts in broadcast clarity.",
+        card2_title: "QR Code Remote Control",
+        card2_desc: "Operate the scoreboard wirelessly from any smartphone without touching the streaming camera.",
+        card3_title: "Official Shot Clock (24s / 14s)",
+        card3_desc: "Integrated possession clock with instant reset controls built for competitive basketball.",
+        card4_title: "Full HD 60fps & Adaptive Bitrate",
+        card4_desc: "High quality up to 1080p60 with Adaptive Bitrate and ultra-reliable RTMP stream engine.",
+        card5_title: "Thermal & Battery Saver",
+        card5_desc: "OLED screen dimming at 50% or 95% to preserve battery life and prevent device overheating.",
+        card6_title: "Security & Privacy",
+        card6_desc: "Full compliance with Google Play Protect and Google API Services User Data Policy.",
+        about_title: "Purpose of Hoop Streamer",
+        about_p1: "Hoop Streamer was built for sports videographers, clubs, basketball leagues, and creators seeking TV-quality live coverage.",
+        about_p2: "Camera and microphone access is strictly requested when recording or broadcasting a game. YouTube integration is solely used to schedule live events and stream directly to your authorized channel.",
+        about_p3: "For further details regarding data privacy, please check our",
+        about_link: "Official Hoop Streamer Privacy Policy",
+        footer_home: "Home"
+      },
+      es: {
+        nav_features: "Características",
+        nav_about: "Acerca de la App",
+        nav_privacy: "Política de Privacidad",
+        hero_badge: "Aplicación Oficial",
+        hero_subtitle: "Transmisión Deportiva Profesional con Marcador en Vivo",
+        hero_desc: "Hoop Streamer es la solución móvil completa para transmitir baloncesto y deportes en vivo, con superposición de marcador digital en tiempo real, control remoto por QR Code y transmisión directa RTMP / YouTube.",
+        btn_google_play: "Disponible en Google Play",
+        btn_privacy: "Política de Privacidad",
+        feat_title: "Características de Hoop Streamer",
+        feat_subtitle: "Desarrollado para brindar máxima calidad y estabilidad en transmisiones en cancha.",
+        card1_title: "Marcador Digital en Pantalla",
+        card1_desc: "Puntuación en tiempo real, reloj de juego, periodo, faltas colectivas y tiempos muertos.",
+        card2_title: "Control Remoto vía QR Code",
+        card2_desc: "Controla el marcador a distancia desde el teléfono de cualquier asistente sin mover la cámara.",
+        card3_title: "Reloj de Posesión (24s / 14s)",
+        card3_desc: "Shot clock oficial integrado con reinicio rápido para baloncesto competitivo.",
+        card4_title: "Video Full HD 60fps & ABR",
+        card4_desc: "Calidad de hasta 1080p60 con tasa de bits adaptativa y transmisión por protocolo RTMP.",
+        card5_title: "Modo Ahorro Térmico",
+        card5_desc: "Atenuación de pantalla al 50% o 95% para cuidar la batería y evitar sobrecalentamiento.",
+        card6_title: "Seguridad y Privacidad",
+        card6_desc: "Total conformidad con las directrices de Google Play Protect y Google API Services.",
+        about_title: "Finalidad de Hoop Streamer",
+        about_p1: "Hoop Streamer fue diseñado para camarógrafos, clubes deportivos, ligas de baloncesto y creadores que transmiten partidos en vivo.",
+        about_p2: "El acceso a cámara y micrófono solo se utiliza durante la grabación y transmisión en vivo. La conexión con YouTube sirve únicamente para emitir en su canal autorizado.",
+        about_p3: "Para más detalles sobre la protección de datos, consulte nuestra",
+        about_link: "Política de Privacidad Oficial de Hoop Streamer",
+        footer_home: "Inicio"
+      },
+      fr: {
+        nav_features: "Fonctionnalités",
+        nav_about: "À propos",
+        nav_privacy: "Confidentialité",
+        hero_badge: "Application Officielle",
+        hero_subtitle: "Diffusion Sportive Professionnelle avec Tableau en Direct",
+        hero_desc: "Hoop Streamer est l'application mobile idéale pour diffuser des matchs de basket en direct avec incrustation d'un tableau d'affichage dynamique, contrôle à distance par QR Code et streaming direct RTMP/YouTube.",
+        btn_google_play: "Disponible sur Google Play",
+        btn_privacy: "Politique de Confidentialité",
+        feat_title: "Fonctionnalités de Hoop Streamer",
+        feat_subtitle: "Conçu pour offrir une qualité et une stabilité maximales sur le terrain.",
+        card1_title: "Tableau des Scores en Direct",
+        card1_desc: "Scores en temps réel, chronomètre de jeu, quart-temps et fautes d'équipe avec affichage net.",
+        card2_title: "Télécommande via QR Code",
+        card2_desc: "Pilotez le tableau des scores à distance depuis n'importe quel smartphone sans toucher la caméra.",
+        card3_title: "Shot Clock Officiel (24s / 14s)",
+        card3_desc: "Chronomètre de tir intégré avec réinitialisation rapide pour les matchs de basket.",
+        card4_title: "Vidéo Full HD 60fps & ABR",
+        card4_desc: "Qualité jusqu'à 1080p60 avec débit adaptatif et moteur de streaming RTMP fiable.",
+        card5_title: "Économie Thermique",
+        card5_desc: "Assombrissement de l'écran à 50% ou 95% pour économiser la batterie et éviter la surchauffe.",
+        card6_title: "Sécurité & Confidentialité",
+        card6_desc: "Respect strict des normes Google Play Protect et Google API Services.",
+        about_title: "Objectif de Hoop Streamer",
+        about_p1: "Hoop Streamer a été développé pour les entraîneurs, ligues et créateurs souhaitant une diffusion avec qualité TV.",
+        about_p2: "L'accès à la caméra et au micro est réservé à la capture vidéo pendant les matchs. L'intégration YouTube sert uniquement à planifier et diffuser sur votre chaîne.",
+        about_p3: "Pour en savoir plus sur la protection de vos données, lisez notre",
+        about_link: "Politique de Confidentialité Officielle",
+        footer_home: "Accueil"
+      },
+      de: {
+        nav_features: "Funktionen",
+        nav_about: "Über die App",
+        nav_privacy: "Datenschutz",
+        hero_badge: "Offizielle App",
+        hero_subtitle: "Professionelles Sport-Streaming mit Live-Anzeigetafel",
+        hero_desc: "Hoop Streamer ist die Komplettlösung für das Livestreaming von Basketballspielen mit integrierter Echtzeit-Anzeigetafel, kabelloser QR-Code-Fernbedienung und direkter RTMP/YouTube-Übertragung.",
+        btn_google_play: "Jetzt bei Google Play",
+        btn_privacy: "Datenschutzerklärung",
+        feat_title: "Hauptmerkmale von Hoop Streamer",
+        feat_subtitle: "Entwickelt für höchste Videostabilität und professionelle Übertragungen am Spielfeldrand.",
+        card1_title: "Live-Spielstandsanzeige",
+        card1_desc: "Punktestand in Echtzeit, Spielzeit, Viertel und Mannschaftsfouls in kristallklarer Darstellung.",
+        card2_title: "Fernbedienung per QR-Code",
+        card2_desc: "Steuern Sie die Spielstandsanzeige kabellos von jedem Smartphone aus.",
+        card3_title: "Offizielle Shot Clock (24s / 14s)",
+        card3_desc: "Integrierte Angriffsuhr mit Schnell-Reset für professionellen Basketball.",
+        card4_title: "Full HD 60fps & Adaptives Bitrate",
+        card4_desc: "Bis zu 1080p60 Auflösung mit adaptiver Bitrate und stabiler RTMP-Übertragung.",
+        card5_title: "Thermosparmodus",
+        card5_desc: "Display-Abdunklung um 50% oder 95% zur Schonung des Akkus und Vermeidung von Überhitzung.",
+        card6_title: "Sicherheit & Datenschutz",
+        card6_desc: "Volle Konformität mit Google Play Protect und den Google API-Richtlinien.",
+        about_title: "Zweck von Hoop Streamer",
+        about_p1: "Hoop Streamer wurde für Videofilmer, Basketball-Ligen und Content-Ersteller entwickelt.",
+        about_p2: "Kamera- und Mikrofonzugriff erfolgt ausschließlich während Live-Übertragungen. Die YouTube-Verbindung dient nur dem Einrichten und Starten des Streams.",
+        about_p3: "Weitere Informationen zum Datenschutz finden Sie in unserer",
+        about_link: "Offiziellen Datenschutzerklärung",
+        footer_home: "Startseite"
+      },
+      zh: {
+        nav_features: "核心功能",
+        nav_about: "关于应用",
+        nav_privacy: "隐私政策",
+        hero_badge: "官方正版应用",
+        hero_subtitle: "专业级篮球赛事直播与实时比分板",
+        hero_desc: "Hoop Streamer 是一款专为篮球及球类赛事直播打造的移动应用，支持实时比分动态叠加、二维码无线遥控比分板以及 RTMP / YouTube 高清推流。",
+        btn_google_play: "前往 Google Play 下载",
+        btn_privacy: "隐私政策",
+        feat_title: "Hoop Streamer 核心功能",
+        feat_subtitle: "为赛场高画质、超低延迟稳定直播而设计。",
+        card1_title: "画面实时比分板",
+        card1_desc: "实时显示比分、比赛倒计时、节次、全队犯规和暂停次数，画面清晰专业。",
+        card2_title: "二维码无线遥控",
+        card2_desc: "助手可通过任何智能手机扫码远程操控计分板，无需触碰直播摄像机。",
+        card3_title: "FIBA 标准 24秒/14秒 进攻时钟",
+        card3_desc: "内置专业进攻倒计时，支持一键快速复位，满足专业篮球比赛需求。",
+        card4_title: "Full HD 60fps 高清推流",
+        card4_desc: "最高支持 1080p60 高帧率，结合自适应码率 (ABR) 与高效 RTMP 推流引擎。",
+        card5_title: "发热与电量保护模式",
+        card5_desc: "支持屏幕亮度降低 50% 或 95%，有效防止设备过热并极大延长电池续航。",
+        card6_title: "安全与隐私保障",
+        card6_desc: "严格遵循 Google Play Protect 及 Google API 用户数据安全隐私规范。",
+        about_title: "Hoop Streamer 应用使命",
+        about_p1: "Hoop Streamer 致力于让每一位教练、赛事组织者和体育主播都能轻松完成电视级别的赛事直播。",
+        about_p2: "摄像头与麦克风权限仅在您开启直播或录像时使用。YouTube 授权仅用于获取您的推流密钥并直接推送到您的频道。",
+        about_p3: "欲了解更多关于数据隐私的信息，请查看我们的",
+        about_link: "Hoop Streamer 官方隐私政策",
+        footer_home: "首页"
+      }
+    };
+
+    function changeLanguage(lang) {
+      const data = translations[lang];
+      if (!data) return;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key]) {
+          el.textContent = data[key];
+        }
+      });
+
+      // Atualiza o atributo lang do HTML
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : (lang === 'zh' ? 'zh-CN' : lang);
+      
+      // Salva preferência no navegador
+      try { localStorage.setItem('hoop_lang', lang); } catch (e) {}
+    }
+
+    // Auto-detectar idioma do navegador do visitante
+    window.addEventListener('DOMContentLoaded', () => {
+      let saved = null;
+      try { saved = localStorage.getItem('hoop_lang'); } catch (e) {}
+      
+      if (saved && translations[saved]) {
+        document.getElementById('langSelect').value = saved;
+        changeLanguage(saved);
+        return;
+      }
+
+      const browserLang = (navigator.language || navigator.userLanguage || 'pt').toLowerCase();
+      let targetLang = 'pt';
+      if (browserLang.startsWith('en')) targetLang = 'en';
+      else if (browserLang.startsWith('es')) targetLang = 'es';
+      else if (browserLang.startsWith('fr')) targetLang = 'fr';
+      else if (browserLang.startsWith('de')) targetLang = 'de';
+      else if (browserLang.startsWith('zh')) targetLang = 'zh';
+
+      if (targetLang !== 'pt') {
+        document.getElementById('langSelect').value = targetLang;
+        changeLanguage(targetLang);
+      }
+    });
+  </script>
 
 </body>
 </html>
