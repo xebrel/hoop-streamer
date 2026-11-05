@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termos de Serviço — Hoop Streamer</title>
+  
+  <meta name="description" content="Termos de Serviço e Condições de Uso do aplicativo Hoop Streamer. Regras de assinatura, uso de transmissão ao vivo e suporte.">
+  <link rel="icon" type="image/png" href="https://hoop.ehbarato.com.br/logo.png">
+
+  <style>
+    :root {
+      --primary: #ff6a00;
+      --primary-hover: #ea580c;
+      --bg: #090d16;
+      --card-bg: #111827;
+      --border: #1f293d;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* Navbar padronizada do site oficial */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 28px;
+      background: rgba(9, 13, 22, 0.95);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+    }
+
+    /* Selo Oficial Google Play na Navbar */
+    .btn-play-nav {
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.2s;
+    }
+    .btn-play-nav:hover {
+      transform: scale(1.03);
+    }
+    .btn-play-nav img {
+      height: 40px;
+      display: block;
+      border-radius: 6px;
+    }
+
+    /* Seletor de Idioma idêntico ao site */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 5px 10px;
+      gap: 6px;
+    }
+    .lang-switcher select {
+      background: transparent;
+      color: var(--text);
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+    .lang-switcher select option {
+      background: var(--card-bg);
+      color: var(--text);
+    }
+
+    /* Container do Conteúdo */
+    .content-wrapper {
+      max-width: 900px;
+      margin: 40px auto 60px auto;
+      padding: 0 20px;
+    }
+    .container {
+      background: var(--card-bg);
+      padding: 48px;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+    }
+    .nav-back {
+      display: inline-block;
+      margin-bottom: 24px;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 106, 0, 0.15);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 106, 0, 0.3);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(26px, 4vw, 34px);
+      color: #fff;
+      margin: 0 0 8px 0;
+      font-weight: 900;
+    }
+    .meta {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    h2 {
+      font-size: 20px;
+      color: #fff;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    p, li {
+      color: #cbd5e1;
+      font-size: 15px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .highlight-box {
+      background-color: rgba(255, 106, 0, 0.08);
+      border-left: 4px solid var(--primary);
+      padding: 18px 22px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+      color: #e2e8f0;
+      font-size: 15px;
+    }
+    .highlight-box strong {
+      color: #fff;
+    }
+
+    /* Rodapé padronizado */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 20px;
+      text-align: center;
+      background: rgba(9, 13, 22, 0.98);
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 28px 20px; }
+      .navbar { padding: 12px 16px; }
+      .brand span { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Navegação Padronizada -->
+  <nav class="navbar">
+    <a href="index.html" class="brand">
+      <img src="https://hoop.ehbarato.com.br/logo.png" onerror="this.src='logo.png'" alt="Hoop Streamer">
+      <span>Hoop Streamer</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html" data-i18n="nav_home">Início</a>
+      <a href="index.html#recursos" data-i18n="nav_features">Recursos</a>
+      <a href="index.html#sobre" data-i18n="nav_about">Finalidade do App</a>
+      <a href="privacidade.html" data-i18n="nav_privacy">Política de Privacidade</a>
+      <a href="termos.html" class="active" data-i18n="nav_terms" style="color:var(--primary); font-weight:700;">Termos de Serviço</a>
+
+      <!-- Selo Oficial Google Play no canto superior direito -->
+      <a href="https://play.google.com/store/apps/details?id=com.hoopstreamer.pro" target="_blank" rel="noopener noreferrer" class="btn-play-nav" title="Disponível no Google Play">
+        <img id="playBadgeImg" src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play">
+      </a>
+
+      <!-- Seletor Multilíngue com Globo -->
+      <div class="lang-switcher">
+        <span>🌐</span>
+        <select id="langSelect" onchange="changeLanguage(this.value)" aria-label="Selecionar Idioma">
+          <option value="pt" selected>Português</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="zh">中文</option>
+        </select>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+    <div class="container">
+      <a href="index.html" class="nav-back" data-i18n="back_home">← Voltar para a Página Inicial</a>
+      
+      <div class="header">
+        <div class="badge" data-i18n="badge_title">Google Play Store • Termos e Condições de Uso</div>
+        <h1 data-i18n="page_title">Termos de Serviço — Hoop Streamer</h1>
+        <div class="meta" data-i18n="page_meta">Última atualização: Novembro de 2026 • Versão 1.1</div>
+      </div>
+
+      <p data-i18n="intro_p">Bem-vindo ao <strong>Hoop Streamer</strong>. Ao instalar, acessar ou utilizar o aplicativo móvel Hoop Streamer (doravante denominado "Aplicativo"), você concorda em cumprir e estar vinculado a estes Termos de Serviço. Se você não concordar com estes termos, não deverá utilizar o Aplicativo.</p>
+
+      <div class="highlight-box" data-i18n="highlight_box">
+        <strong>Transparência Operacional:</strong> O Hoop Streamer é um aplicativo exclusivo para <strong>transmissão esportiva ao vivo (live streaming)</strong> com sobreposição de placar eletrônico profissional em tempo real. O aplicativo <strong>NÃO realiza gravações nem armazena arquivos de vídeo</strong> no seu aparelho. Suas assinaturas e compras são processadas com total segurança pela Google Play Store.
+      </div>
+
+      <h2 data-i18n="sec1_title">1. Objeto do Serviço (Transmissão Exclusiva ao Vivo)</h2>
+      <p data-i18n="sec1_desc">O Hoop Streamer fornece a treinadores, organizadores de torneios, clubes e canais esportivos uma ferramenta profissional para:</p>
+      <ul>
+        <li data-i18n="sec1_item1"><strong>Transmissão em Tempo Real:</strong> Codificação e envio direto de áudio e vídeo via protocolo RTMP/RTMPS para plataformas de streaming (como YouTube Live);</li>
+        <li data-i18n="sec1_item2"><strong>Placar Eletrônico Integrado:</strong> Controle visual na tela de pontuação, faltas coletivas, cronômetro de jogo, intervalos e cronômetro de posse de bola (24s / 14s shot clock);</li>
+        <li data-i18n="sec1_item3"><strong>Controle Remoto sem Fio via Wi-Fi:</strong> Operação do placar à distância por qualquer smartphone conectado na mesma rede local através de interface web intuitiva e pareamento por QR Code.</li>
+      </ul>
+
+      <h2 data-i18n="sec2_title">2. Esclarecimento sobre Não Gravação Local de Vídeo</h2>
+      <p data-i18n="sec2_desc">Para total clareza dos usuários e em conformidade com as políticas do Google Play:</p>
+      <ul>
+        <li data-i18n="sec2_item1">O aplicativo <strong>não possui função de gravador de vídeo local</strong> e <strong>não salva arquivos de gravação na memória ou armazenamento interno/externo do seu smartphone</strong>.</li>
+        <li data-i18n="sec2_item2">O fluxo audiovisual capturado pela câmera e microfone é imediatamente transmitido em tempo real para os servidores de transmissão ao vivo autorizados pelo usuário (ex: canal do YouTube), onde a gravação da transmissão pode ficar disponível na nuvem da própria plataforma receptora, de acordo com as configurações da sua conta de streaming.</li>
+      </ul>
+
+      <h2 data-i18n="sec3_title">3. Assinaturas e Cobrança via Google Play Billing</h2>
+      <p data-i18n="sec3_desc">O acesso aos recursos completos do Hoop Streamer é comercializado sob modelo de assinatura ou compra no app:</p>
+      <ul>
+        <li data-i18n="sec3_item1"><strong>Processamento Oficial de Pagamentos:</strong> Todas as transações financeiras, cobranças e cobranças de assinaturas são processadas exclusivamente pelo sistema oficial do Google Play (Google Play Billing). O aplicativo não coleta, não processa e não armazena dados de cartão de crédito ou dados bancários do usuário.</li>
+        <li data-i18n="sec3_item2"><strong>Renovação Automática:</strong> A assinatura é renovada automaticamente pelo mesmo valor e período contratado (mensal ou anual), a menos que o cancelamento seja realizado pelo próprio usuário com pelo menos 24 horas de antecedência ao término do ciclo vigente.</li>
+        <li data-i18n="sec3_item3"><strong>Como Cancelar a Assinatura:</strong> Você pode gerenciar ou cancelar sua assinatura a qualquer momento de forma simples diretamente no seu dispositivo Android: abra a <strong>Google Play Store</strong>, toque na foto do seu perfil no canto superior direito, acesse <strong>Pagamentos e assinaturas &gt; Assinaturas</strong>, selecione o <em>Hoop Streamer</em> e confirme o cancelamento.</li>
+        <li data-i18n="sec3_item4"><strong>Reembolsos:</strong> As solicitações de reembolso são administradas conforme as políticas oficiais de reembolso do Google Play Store. O cancelamento interrompe cobranças futuras e mantém seu acesso ativo até o término do período já faturado.</li>
+      </ul>
+
+      <h2 data-i18n="sec4_title">4. Permissões do Dispositivo</h2>
+      <p data-i18n="sec4_desc">Para viabilizar a transmissão esportiva, o aplicativo requer o consentimento das seguintes permissões:</p>
+      <ul>
+        <li data-i18n="sec4_item1"><strong>Câmera:</strong> Utilizada única e exclusivamente durante a sessão de transmissão ao vivo iniciada pelo próprio usuário para capturar a imagem da partida.</li>
+        <li data-i18n="sec4_item2"><strong>Microfone:</strong> Utilizado exclusivamente para captar o áudio do ginásio e narração durante a transmissão ao vivo ativa.</li>
+        <li data-i18n="sec4_item3"><strong>Acesso à Rede / Internet:</strong> Necessário para estabelecer a conexão e enviar os pacotes de vídeo ao servidor de destino RTMP.</li>
+      </ul>
+      <p data-i18n="sec4_note">Nenhuma imagem ou áudio é capturado ou transmitido em segundo plano quando uma transmissão não estiver ativamente em execução.</p>
+
+      <h2 data-i18n="sec5_title">5. Integração com a API do YouTube</h2>
+      <p data-i18n="sec5_desc">Ao utilizar o recurso de login com a conta Google para transmissões no YouTube, o usuário declara concordar com os Termos de Serviço do YouTube e com a Política de Privacidade do Google. O usuário é o único responsável pelos direitos de transmissão e pelo conteúdo exibido em seu canal.</p>
+
+      <h2 data-i18n="sec6_title">6. Propriedade Intelectual</h2>
+      <p data-i18n="sec6_desc">O software Hoop Streamer, logotipos, elementos visuais do placar, design e códigos são de titularidade de <strong>Hoop Streamer Labs / José Luiz de Souza</strong>, protegidos pelas leis de propriedade intelectual e direitos autorais. É vedada a engenharia reversa, redistribuição não autorizada ou cópia comercial do aplicativo.</p>
+
+      <h2 data-i18n="sec7_title">7. Suporte e Canal de Atendimento</h2>
+      <p data-i18n="sec7_desc">Para dúvidas sobre os Termos de Serviço, suporte técnico ou questões operacionais do aplicativo, disponibilizamos atendimento através do canal direto do desenvolvedor:</p>
+      <div style="margin-top: 14px; background: rgba(255,255,255,0.03); padding: 18px 22px; border-radius: 8px; border: 1px solid var(--border);">
+        <p><strong data-i18n="dev_resp">Desenvolvedor Responsável: José Luiz de Souza (Hoop Streamer Labs)</strong></p>
+        <p><strong data-i18n="dev_email">E-mail de Suporte:</strong> <a href="mailto:jlsouza@gmail.com" style="color:var(--primary); font-weight:600;">jlsouza@gmail.com</a></p>
+        <p><strong data-i18n="dev_loc">Localização: São José - SC, Brasil</strong></p>
+        <p><strong data-i18n="dev_web">Website Oficial:</strong> <a href="https://hoop.ehbarato.com.br/" target="_blank" style="color:var(--primary);">https://hoop.ehbarato.com.br/</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Rodapé padronizado -->
+  <footer>
+    <div class="footer-links">
+      <a href="index.html" data-i18n="nav_home">Início</a> •
+      <a href="index.html#recursos" data-i18n="nav_features">Recursos</a> •
+      <a href="privacidade.html" data-i18n="nav_privacy">Política de Privacidade</a> •
+      <a href="termos.html" style="color:var(--primary);" data-i18n="nav_terms">Termos de Serviço</a> •
+      <a href="mailto:jlsouza@gmail.com">Contato: jlsouza@gmail.com</a>
+    </div>
+    <p data-i18n="footer_rights">© 2026 Hoop Streamer. Desenvolvido por JL Souza (Hoop Streamer Labs). Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const translations = {
+  "pt": {
+    "nav_home": "Início",
+    "nav_features": "Recursos",
+    "nav_about": "Finalidade do App",
+    "nav_privacy": "Política de Privacidade",
+    "nav_terms": "Termos de Serviço",
+    "back_home": "← Voltar para a Página Inicial",
+    "badge_title": "Google Play Store • Termos e Condições de Uso",
+    "page_title": "Termos de Serviço — Hoop Streamer",
+    "page_meta": "Última atualização: Novembro de 2026 • Versão 1.1",
+    "intro_p": "Bem-vindo ao <strong>Hoop Streamer</strong>. Ao instalar, acessar ou utilizar o aplicativo móvel Hoop Streamer (doravante denominado \"Aplicativo\"), você concorda em cumprir e estar vinculado a estes Termos de Serviço. Se você não concordar com estes termos, não deverá utilizar o Aplicativo.",
+    "highlight_box": "<strong>Transparência Operacional:</strong> O Hoop Streamer é um aplicativo exclusivo para <strong>transmissão esportiva ao vivo (live streaming)</strong> com sobreposição de placar eletrônico profissional em tempo real. O aplicativo <strong>NÃO realiza gravações nem armazena arquivos de vídeo</strong> no seu aparelho. Suas assinaturas e compras são processadas com total segurança pela Google Play Store.",
+    "sec1_title": "1. Objeto do Serviço (Transmissão Exclusiva ao Vivo)",
+    "sec1_desc": "O Hoop Streamer fornece a treinadores, organizadores de torneios, clubes e canais esportivos uma ferramenta profissional para:",
+    "sec1_item1": "<strong>Transmissão em Tempo Real:</strong> Codificação e envio direto de áudio e vídeo via protocolo RTMP/RTMPS para plataformas de streaming (como YouTube Live);",
+    "sec1_item2": "<strong>Placar Eletrônico Integrado:</strong> Controle visual na tela de pontuação, faltas coletivas, cronômetro de jogo, intervalos e cronômetro de posse de bola (24s / 14s shot clock);",
+    "sec1_item3": "<strong>Controle Remoto sem Fio via Wi-Fi:</strong> Operação do placar à distância por qualquer smartphone conectado na mesma rede local através de interface web intuitiva e pareamento por QR Code.",
+    "sec2_title": "2. Esclarecimento sobre Não Gravação Local de Vídeo",
+    "sec2_desc": "Para total clareza dos usuários e em conformidade com as políticas do Google Play:",
+    "sec2_item1": "O aplicativo <strong>não possui função de gravador de vídeo local</strong> e <strong>não salva arquivos de gravação na memória ou armazenamento interno/externo do seu smartphone</strong>.",
+    "sec2_item2": "O fluxo audiovisual capturado pela câmera e microfone é imediatamente transmitido em tempo real para os servidores de transmissão ao vivo autorizados pelo usuário (ex: canal do YouTube), onde a gravação da transmissão pode ficar disponível na nuvem da própria plataforma receptora, de acordo com as configurações da sua conta de streaming.",
+    "sec3_title": "3. Assinaturas e Cobrança via Google Play Billing",
+    "sec3_desc": "O acesso aos recursos completos do Hoop Streamer é comercializado sob modelo de assinatura ou compra no app:",
+    "sec3_item1": "<strong>Processamento Oficial de Pagamentos:</strong> Todas as transações financeiras, cobranças e cobranças de assinaturas são processadas exclusivamente pelo sistema oficial do Google Play (Google Play Billing). O aplicativo não coleta, não processa e não armazena dados de cartão de crédito ou dados bancários do usuário.",
+    "sec3_item2": "<strong>Renovação Automática:</strong> A assinatura é renovada automaticamente pelo mesmo valor e período contratado (mensal ou anual), a menos que o cancelamento seja realizado pelo próprio usuário com pelo menos 24 horas de antecedência ao término do ciclo vigente.",
+    "sec3_item3": "<strong>Como Cancelar a Assinatura:</strong> Você pode gerenciar ou cancelar sua assinatura a qualquer momento de forma simples diretamente no seu dispositivo Android: abra a <strong>Google Play Store</strong>, toque na foto do seu perfil no canto superior direito, acesse <strong>Pagamentos e assinaturas &gt; Assinaturas</strong>, selecione o <em>Hoop Streamer</em> e confirme o cancelamento.",
+    "sec3_item4": "<strong>Reembolsos:</strong> As solicitações de reembolso são administradas conforme as políticas oficiais de reembolso do Google Play Store. O cancelamento interrompe cobranças futuras e mantém seu acesso ativo até o término do período já faturado.",
+    "sec4_title": "4. Permissões do Dispositivo",
+    "sec4_desc": "Para viabilizar a transmissão esportiva, o aplicativo requer o consentimento das seguintes permissões:",
+    "sec4_item1": "<strong>Câmera:</strong> Utilizada única e exclusivamente durante a sessão de transmissão ao vivo iniciada pelo próprio usuário para capturar a imagem da partida.",
+    "sec4_item2": "<strong>Microfone:</strong> Utilizado exclusivamente para captar o áudio do ginásio e narração durante a transmissão ao vivo ativa.",
+    "sec4_item3": "<strong>Acesso à Rede / Internet:</strong> Necessário para estabelecer a conexão e enviar os pacotes de vídeo ao servidor de destino RTMP.",
+    "sec4_note": "Nenhuma imagem ou áudio é capturado ou transmitido em segundo plano quando uma transmissão não estiver ativamente em execução.",
+    "sec5_title": "5. Integração com a API do YouTube",
+    "sec5_desc": "Ao utilizar o recurso de login com a conta Google para transmissões no YouTube, o usuário declara concordar com os Termos de Serviço do YouTube e com a Política de Privacidade do Google. O usuário é o único responsável pelos direitos de transmissão e pelo conteúdo exibido em seu canal.",
+    "sec6_title": "6. Propriedade Intelectual",
+    "sec6_desc": "O software Hoop Streamer, logotipos, elementos visuais do placar, design e códigos são de titularidade de <strong>Hoop Streamer Labs / José Luiz de Souza</strong>, protegidos pelas leis de propriedade intelectual e direitos autorais. É vedada a engenharia reversa, redistribuição não autorizada ou cópia comercial do aplicativo.",
+    "sec7_title": "7. Suporte e Canal de Atendimento",
+    "sec7_desc": "Para dúvidas sobre os Termos de Serviço, suporte técnico ou questões operacionais do aplicativo, disponibilizamos atendimento através do canal direto do desenvolvedor:",
+    "dev_resp": "Desenvolvedor Responsável: José Luiz de Souza (Hoop Streamer Labs)",
+    "dev_email": "E-mail de Suporte:",
+    "dev_loc": "Localização: São José - SC, Brasil",
+    "dev_web": "Website Oficial:",
+    "footer_rights": "© 2026 Hoop Streamer. Desenvolvido por JL Souza (Hoop Streamer Labs). Todos os direitos reservados."
+  },
+  "en": {
+    "nav_home": "Home",
+    "nav_features": "Features",
+    "nav_about": "App Purpose",
+    "nav_privacy": "Privacy Policy",
+    "nav_terms": "Terms of Service",
+    "back_home": "← Back to Home",
+    "badge_title": "Google Play Store • Terms & Conditions",
+    "page_title": "Terms of Service — Hoop Streamer",
+    "page_meta": "Last updated: November 2026 • Version 1.1",
+    "intro_p": "Welcome to <strong>Hoop Streamer</strong>. By installing, accessing, or using the Hoop Streamer mobile application (hereinafter referred to as \"App\"), you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, you should not use the App.",
+    "highlight_box": "<strong>Operational Transparency:</strong> Hoop Streamer is exclusively a <strong>live streaming sports application</strong> with professional real-time scoreboard overlay. The app <strong>DOES NOT record or store video files</strong> on your device. Your subscriptions and purchases are processed with complete security by the Google Play Store.",
+    "sec1_title": "1. Scope of Service (Live Streaming Only)",
+    "sec1_desc": "Hoop Streamer provides coaches, tournament organizers, sports clubs, and broadcasters with a professional tool for:",
+    "sec1_item1": "<strong>Real-Time Broadcasting:</strong> Direct encoding and streaming of audio and video via RTMP/RTMPS protocols to streaming platforms (such as YouTube Live);",
+    "sec1_item2": "<strong>Integrated Scoreboard:</strong> On-screen visual control of scores, team fouls, game clock, periods, and shot clock (24s / 14s);",
+    "sec1_item3": "<strong>Wireless Remote Control via Wi-Fi:</strong> Remote scoreboard operation from any smartphone connected to the same local network via an intuitive web interface paired with QR Code.",
+    "sec2_title": "2. Clarification on No Local Video Recording",
+    "sec2_desc": "For complete clarity for users and in compliance with Google Play policies:",
+    "sec2_item1": "The app <strong>does not have local video recorder functionality</strong> and <strong>does not save recorded files into internal or external smartphone storage</strong>.",
+    "sec2_item2": "The audiovisual stream captured by the camera and microphone is immediately transmitted in real time to the live streaming servers authorized by the user (e.g. YouTube channel), where the broadcast archive may be stored in the cloud according to your destination streaming settings.",
+    "sec3_title": "3. Subscriptions & Google Play Billing",
+    "sec3_desc": "Full access to Hoop Streamer features is offered under a subscription or in-app purchase model:",
+    "sec3_item1": "<strong>Official Payment Processing:</strong> All financial transactions, billing, and subscription renewals are handled exclusively by the official Google Play Billing system. The app does not collect, process, or store payment card or banking information.",
+    "sec3_item2": "<strong>Automatic Renewal:</strong> Subscriptions renew automatically at the same price and duration (monthly or annual), unless canceled by the user at least 24 hours before the end of the current billing cycle.",
+    "sec3_item3": "<strong>How to Cancel Subscriptions:</strong> You can manage or cancel your subscription at any time directly on your Android device: open the <strong>Google Play Store</strong>, tap your profile icon at the top right, go to <strong>Payments & subscriptions &gt; Subscriptions</strong>, select <em>Hoop Streamer</em>, and confirm cancellation.",
+    "sec3_item4": "<strong>Refunds:</strong> Refund requests are managed in accordance with Google Play Store official refund policies. Cancellation halts future charges and maintains your active access until the end of the paid period.",
+    "sec4_title": "4. Device Permissions",
+    "sec4_desc": "To deliver sports live streaming, the app requests the following user permissions:",
+    "sec4_item1": "<strong>Camera:</strong> Used strictly during an active live broadcast initiated by the user to capture court footage.",
+    "sec4_item2": "<strong>Microphone:</strong> Used solely to capture venue audio and commentary during active live streaming.",
+    "sec4_item3": "<strong>Network / Internet:</strong> Essential to establish connections and transmit video packets to the RTMP destination server.",
+    "sec4_note": "No images or audio are captured or transmitted in the background when a live stream is not actively running.",
+    "sec5_title": "5. YouTube API Integration",
+    "sec5_desc": "When using Google sign-in to stream to YouTube, you agree to comply with the YouTube Terms of Service and Google Privacy Policy. Users are solely responsible for broadcasting rights and content displayed on their channels.",
+    "sec6_title": "6. Intellectual Property",
+    "sec6_desc": "The Hoop Streamer software, logos, scoreboard visual elements, design, and code are the exclusive property of <strong>Hoop Streamer Labs / José Luiz de Souza</strong>, protected by international intellectual property and copyright laws.",
+    "sec7_title": "7. Customer Support & Contact",
+    "sec7_desc": "For questions regarding these Terms of Service, technical support, or operational inquiries, contact our developer team directly:",
+    "dev_resp": "Responsible Developer: José Luiz de Souza (Hoop Streamer Labs)",
+    "dev_email": "Support Email:",
+    "dev_loc": "Location: São José - SC, Brazil",
+    "dev_web": "Official Website:",
+    "footer_rights": "© 2026 Hoop Streamer. Developed by JL Souza (Hoop Streamer Labs). All rights reserved."
+  },
+  "es": {
+    "nav_home": "Inicio",
+    "nav_features": "Funcionalidades",
+    "nav_about": "Finalidad de la App",
+    "nav_privacy": "Política de Privacidad",
+    "nav_terms": "Términos de Servicio",
+    "back_home": "← Volver a la Página Principal",
+    "badge_title": "Google Play Store • Términos y Condiciones",
+    "page_title": "Términos de Servicio — Hoop Streamer",
+    "page_meta": "Última actualización: Noviembre de 2026 • Versión 1.1",
+    "intro_p": "Bienvenido a <strong>Hoop Streamer</strong>. Al instalar, acceder o utilizar la aplicación móvil Hoop Streamer (en adelante \"Aplicación\"), usted acepta cumplir y estar sujeto a estos Términos de Servicio.",
+    "highlight_box": "<strong>Transparencia Operativa:</strong> Hoop Streamer es una aplicación exclusiva para <strong>transmisión deportiva en vivo (live streaming)</strong> con marcador digital profesional en tiempo real. La aplicación <strong>NO graba ni almacena archivos de video</strong> en su dispositivo. Sus suscripciones se procesan con total seguridad a través de Google Play Store.",
+    "sec1_title": "1. Objeto del Servicio (Exclusivamente Transmisión en Vivo)",
+    "sec1_desc": "Hoop Streamer proporciona a entrenadores, organizadores de torneos y clubes deportivos una herramienta profesional para:",
+    "sec1_item1": "<strong>Transmisión en Tiempo Real:</strong> Codificación y envío directo de audio y video mediante protocolo RTMP/RTMPS a plataformas como YouTube Live;",
+    "sec1_item2": "<strong>Marcador Integrado:</strong> Control visual en pantalla de puntos, faltas de equipo, reloj de juego, periodos y posesión de 24s/14s;",
+    "sec1_item3": "<strong>Control Remoto Inalámbrico por Wi-Fi:</strong> Operación del marcador a distancia desde cualquier teléfono conectado a la misma red mediante código QR.",
+    "sec2_title": "2. Aclaración sobre la No Grabación Local de Video",
+    "sec2_desc": "Para total claridad y en cumplimiento de las políticas de Google Play:",
+    "sec2_item1": "La aplicación <strong>no tiene función de grabadora de video local</strong> y <strong>no guarda archivos de video en la memoria del teléfono</strong>.",
+    "sec2_item2": "La señal capturada por cámara y micrófono se envía de inmediato en tiempo real a los servidores de transmisión autorizados por el usuario.",
+    "sec3_title": "3. Suscripciones y Facturación en Google Play",
+    "sec3_desc": "El acceso completo a las funciones se comercializa mediante suscripción en Google Play:",
+    "sec3_item1": "<strong>Procesamiento Oficial:</strong> Todas las transacciones son gestionadas exclusivamente por Google Play Billing.",
+    "sec3_item2": "<strong>Renovación Automática:</strong> Se renueva automáticamente al menos que se cancele 24 horas antes del fin del período.",
+    "sec3_item3": "<strong>Cómo Cancelar:</strong> En Google Play Store > Pagos y suscripciones > Suscripciones > Hoop Streamer > Cancelar.",
+    "sec3_item4": "<strong>Reembolsos:</strong> Se aplican las políticas oficiales de reembolso de Google Play.",
+    "sec4_title": "4. Permisos del Dispositivo",
+    "sec4_desc": "Para operar la transmisión, la app solicita Cámara, Micrófono y Red/Internet exclusivamente durante las emisiones activas.",
+    "sec4_item1": "<strong>Cámara:</strong> Utilizada únicamente durante la emisión en vivo iniciada por el usuario.",
+    "sec4_item2": "<strong>Micrófono:</strong> Utilizado para audio ambiental y comentarios deportivos en vivo.",
+    "sec4_item3": "<strong>Red / Internet:</strong> Necesario para enviar el flujo RTMP al servidor de destino.",
+    "sec4_note": "No se captura ni transmite información en segundo plano cuando la transmisión está inactiva.",
+    "sec5_title": "5. Integración con YouTube API",
+    "sec5_desc": "Al utilizar la conexión con YouTube, el usuario acepta los Términos de Servicio de YouTube y la Política de Privacidad de Google.",
+    "sec6_title": "6. Propiedad Intelectual",
+    "sec6_desc": "El software Hoop Streamer, logotipos y diseños son propiedad de Hoop Streamer Labs / José Luiz de Souza.",
+    "sec7_title": "7. Soporte y Contacto",
+    "sec7_desc": "Para consultas sobre los Términos de Servicio o soporte técnico, contáctenos directamente:",
+    "dev_resp": "Desarrollador Responsable: José Luiz de Souza (Hoop Streamer Labs)",
+    "dev_email": "Correo de Soporte:",
+    "dev_loc": "Ubicación: São José - SC, Brasil",
+    "dev_web": "Sitio Web Oficial:",
+    "footer_rights": "© 2026 Hoop Streamer. Desarrollado por JL Souza (Hoop Streamer Labs). Todos los derechos reservados."
+  },
+  "fr": {
+    "nav_home": "Accueil",
+    "nav_features": "Fonctionnalités",
+    "nav_about": "Finalité de l'app",
+    "nav_privacy": "Politique de Confidentialité",
+    "nav_terms": "Conditions d'Utilisation",
+    "back_home": "← Retour à l'accueil",
+    "badge_title": "Google Play Store • Conditions d'Utilisation",
+    "page_title": "Conditions d'Utilisation — Hoop Streamer",
+    "page_meta": "Dernière mise à jour : Novembre 2026 • Version 1.1",
+    "intro_p": "Bienvenue sur <strong>Hoop Streamer</strong>. En installant ou en utilisant l'application mobile Hoop Streamer, vous acceptez ces Conditions d'Utilisation.",
+    "highlight_box": "<strong>Transparence Opérationnelle :</strong> Hoop Streamer est exclusivement une application de <strong>diffusion sportive en direct (live streaming)</strong> avec incrustation de tableau d'affichage en temps réel. L'application <strong>N'ENREGISTRE PAS et ne stocke aucun fichier vidéo</strong> sur votre appareil. Vos abonnements sont traités en toute sécurité par Google Play Store.",
+    "sec1_title": "1. Objet du Service (Diffusion en Direct Uniquement)",
+    "sec1_desc": "Hoop Streamer offre aux entraîneurs, clubs et ligues une solution professionnelle :",
+    "sec1_item1": "<strong>Diffusion en Temps Réel :</strong> Envoi direct audio et vidéo par protocole RTMP/RTMPS vers des plateformes comme YouTube Live ;",
+    "sec1_item2": "<strong>Tableau d'Affichage Intégré :</strong> Score, fautes d'équipe, chronomètre et shot clock (24s / 14s) ;",
+    "sec1_item3": "<strong>Télécommande Wi-Fi :</strong> Contrôle à distance depuis n'importe quel smartphone via code QR.",
+    "sec2_title": "2. Absence d'Enregistrement Vidéo Local",
+    "sec2_desc": "L'application ne dispose pas de fonction d'enregistrement local et ne sauvegarde aucune vidéo dans la mémoire de votre appareil.",
+    "sec2_item1": "Le flux vidéo et audio capté est envoyé instantanément en streaming vers les serveurs autorisés par l'utilisateur.",
+    "sec2_item2": "L'enregistrement éventuel est conservé sur le cloud de la plateforme destinataire (ex. YouTube).",
+    "sec3_title": "3. Abonnements et Facturation Google Play",
+    "sec3_desc": "Toutes les transactions sont traitées exclusivement par Google Play Billing. Renouvellement automatique résiliable à tout moment dans Google Play > Abonnements.",
+    "sec3_item1": "<strong>Traitement Officiel :</strong> Aucune donnée bancaire n'est collectée par l'application.",
+    "sec3_item2": "<strong>Renouvellement Automatique :</strong> Annulable jusqu'à 24h avant l'échéance.",
+    "sec3_item3": "<strong>Résiliation :</strong> Directement dans l'application Google Play Store.",
+    "sec3_item4": "<strong>Remboursements :</strong> Selon les règles officielles de Google Play.",
+    "sec4_title": "4. Permissions de l'Appareil",
+    "sec4_desc": "Caméra, Microphone et Réseau sont sollicités uniquement pendant la diffusion en direct active.",
+    "sec4_item1": "<strong>Caméra :</strong> Capture du match en direct uniquement.",
+    "sec4_item2": "<strong>Microphone :</strong> Ambiance et commentaires en direct.",
+    "sec4_item3": "<strong>Réseau :</strong> Transmission des flux RTMP.",
+    "sec4_note": "Aucune donnée n'est capturée en arrière-plan lorsque la diffusion est inactive.",
+    "sec5_title": "5. Intégration API YouTube",
+    "sec5_desc": "L'utilisateur accepte les Conditions d'Utilisation de YouTube et les Règles de Confidentialité de Google.",
+    "sec6_title": "6. Propriété Intellectuelle",
+    "sec6_desc": "Le logiciel Hoop Streamer est la propriété exclusive de Hoop Streamer Labs / José Luiz de Souza.",
+    "sec7_title": "7. Support et Contact",
+    "sec7_desc": "Pour toute question, contactez notre équipe :",
+    "dev_resp": "Développeur Responsable : José Luiz de Souza (Hoop Streamer Labs)",
+    "dev_email": "E-mail de Support :",
+    "dev_loc": "Localisation : São José - SC, Brésil",
+    "dev_web": "Site Officiel :",
+    "footer_rights": "© 2026 Hoop Streamer. Développé par JL Souza (Hoop Streamer Labs). Tous droits réservés."
+  },
+  "de": {
+    "nav_home": "Startseite",
+    "nav_features": "Funktionen",
+    "nav_about": "Zweck der App",
+    "nav_privacy": "Datenschutzerklärung",
+    "nav_terms": "Nutzungsbedingungen",
+    "back_home": "← Zurück zur Startseite",
+    "badge_title": "Google Play Store • Nutzungsbedingungen",
+    "page_title": "Nutzungsbedingungen — Hoop Streamer",
+    "page_meta": "Letzte Aktualisierung: November 2026 • Version 1.1",
+    "intro_p": "Willkommen bei <strong>Hoop Streamer</strong>. Durch die Nutzung der App stimmen Sie diesen Nutzungsbedingungen zu.",
+    "highlight_box": "<strong>Betriebstransparenz:</strong> Hoop Streamer ist ausschließlich eine <strong>Live-Streaming-Sport-App</strong> mit professioneller Echtzeit-Anzeigetafel. Die App <strong>ZEICHNET KEINE Videodateien auf und speichert sie nicht</strong> auf Ihrem Gerät. Abonnements werden sicher über den Google Play Store abgewickelt.",
+    "sec1_title": "1. Leistungsumfang (Ausschließlich Live-Streaming)",
+    "sec1_desc": "Hoop Streamer bietet Trainern, Vereinen und Übertragern professionelle Werkzeuge:",
+    "sec1_item1": "<strong>Echtzeit-Übertragung:</strong> Audio- und Video-Streaming über RTMP/RTMPS zu YouTube Live;",
+    "sec1_item2": "<strong>Digitale Anzeigetafel:</strong> Spielstand, Teamfouls, Spielzeit und 24s/14s Shot Clock;",
+    "sec1_item3": "<strong>WLAN-Fernbedienung:</strong> Bedienung der Anzeigetafel über QR-Code im lokalen Netzwerk.",
+    "sec2_title": "2. Keine lokale Videoaufzeichnung",
+    "sec2_desc": "Die App speichert keine Videos auf dem Gerät. Das Kamerasignal wird in Echtzeit direkt an die Übertragungsplattform gestreamt.",
+    "sec2_item1": "Keine lokale Dateispeicherung auf dem Smartphone.",
+    "sec2_item2": "Archivierung erfolgt auf Wunsch in der Cloud der Zielplattform (z.B. YouTube).",
+    "sec3_title": "3. Abonnements & Google Play Billing",
+    "sec3_desc": "Alle Zahlungen erfolgen sicher über Google Play Billing. Abonnements verlängern sich automatisch und können jederzeit im Google Play Store gekündigt werden.",
+    "sec3_item1": "<strong>Sichere Abwicklung:</strong> Keine Speicherung von Bankdaten in der App.",
+    "sec3_item2": "<strong>Verlängerung:</strong> Automatisch bis 24 Std. vor Ablauf kündbar.",
+    "sec3_item3": "<strong>Kündigung:</strong> Direkt im Google Play Store unter Abonnements.",
+    "sec3_item4": "<strong>Erstattungen:</strong> Gemäß den offiziellen Richtlinien von Google Play.",
+    "sec4_title": "4. Berechtigungen",
+    "sec4_desc": "Kamera, Mikrofon und Internet werden ausschließlich während aktiver Übertragungen verwendet.",
+    "sec4_item1": "<strong>Kamera:</strong> Nur für die Live-Übertragung des Spiels.",
+    "sec4_item2": "<strong>Mikrofon:</strong> Für Hallenton und Live-Kommentare.",
+    "sec4_item3": "<strong>Netzwerk:</strong> Zur Übertragung des RTMP-Videostreams.",
+    "sec4_note": "Keine Hintergrundaufzeichnung bei inaktiver Übertragung.",
+    "sec5_title": "5. YouTube API Integration",
+    "sec5_desc": "Es gelten die YouTube-Nutzungsbedingungen und Google-Datenschutzrichtlinien.",
+    "sec6_title": "6. Urheberrecht",
+    "sec6_desc": "Hoop Streamer ist geistiges Eigentum von Hoop Streamer Labs / José Luiz de Souza.",
+    "sec7_title": "7. Support & Kontakt",
+    "sec7_desc": "Kontaktieren Sie uns bei Fragen gerne direkt:",
+    "dev_resp": "Verantwortlicher Entwickler: José Luiz de Souza (Hoop Streamer Labs)",
+    "dev_email": "Support-E-Mail:",
+    "dev_loc": "Standort: São José - SC, Brasilien",
+    "dev_web": "Offizielle Website:",
+    "footer_rights": "© 2026 Hoop Streamer. Entwickelt von JL Souza (Hoop Streamer Labs). Alle Rechte vorbehalten."
+  },
+  "zh": {
+    "nav_home": "首页",
+    "nav_features": "功能特点",
+    "nav_about": "应用说明",
+    "nav_privacy": "隐私政策",
+    "nav_terms": "服务条款",
+    "back_home": "← 返回首页",
+    "badge_title": "Google Play 商店 • 使用条款与服务协议",
+    "page_title": "服务条款 — Hoop Streamer",
+    "page_meta": "最近更新：2026年11月 • 版本 1.1",
+    "intro_p": "欢迎使用 <strong>Hoop Streamer</strong>。安装、访问或使用 Hoop Streamer 移动应用程序（以下简称“应用”），即表示您同意遵守本服务条款并受其约束。如果您不同意这些条款，请勿使用本应用。",
+    "highlight_box": "<strong>运营透明度声明：</strong>Hoop Streamer 是一款专为<strong>体育赛事高清实时直播 (Live Streaming)</strong> 与专业电子比分板叠加设计的移动工具。本应用<strong>不录制且不存储任何视频文件</strong>在您的设备本地。您的订阅与购买均由 Google Play 商店安全处理。",
+    "sec1_title": "1. 服务范围（仅限实时推流直播）",
+    "sec1_desc": "Hoop Streamer 为教练员、赛事组织者、体育俱乐部和主播提供专业直播解决方案：",
+    "sec1_item1": "<strong>实时推流传输：</strong>通过 RTMP/RTMPS 协议将音视频直接推送到直播平台（如 YouTube Live）；",
+    "sec1_item2": "<strong>电子计分板叠加：</strong>在屏幕上实时控制比分、全队犯规、比赛计时器、节次与 24s/14s 进攻时钟；",
+    "sec1_item3": "<strong>Wi-Fi 无线远程控制：</strong>局域网内任意智能手机扫描二维码即可远程同步操作比分，无需触碰直播设备。",
+    "sec2_title": "2. 无本地视频录制说明",
+    "sec2_desc": "为保证用户知情权并符合 Google Play 政策要求：",
+    "sec2_item1": "本应用<strong>不具备本地视频录制功能</strong>，亦<strong>不会将视频录像保存至手机内存或外部存储</strong>。",
+    "sec2_item2": "摄像头与麦克风采集的音视频流实时直接传输至用户授权的目标直播服务器（如 YouTube 频道），直播回放依据接收平台的设置保存在云端。",
+    "sec3_title": "3. Google Play 订阅与付费说明",
+    "sec3_desc": "Hoop Streamer 的高级功能采用应用内订阅模式提供：",
+    "sec3_item1": "<strong>官方安全结算：</strong>所有费用和订阅均由 Google Play Billing 官方计费系统处理，本应用不收集或存储用户银行卡信息。",
+    "sec3_item2": "<strong>自动续订：</strong>订阅将按所选周期自动续订，用户可在当前周期结束前至少 24 小时随时取消。",
+    "sec3_item3": "<strong>如何取消订阅：</strong>在 Android 设备上打开 <strong>Google Play 商店</strong> &gt; 点击右上角头像 &gt; <strong>付款和订阅 &gt; 订阅</strong> &gt; 选择 <em>Hoop Streamer</em> 并确认取消。",
+    "sec3_item4": "<strong>退款政策：</strong>退款申请严格遵循 Google Play 官方退款政策，取消订阅后不会产生后续扣费，且当前周期权益继续有效直至到期。",
+    "sec4_title": "4. 设备权限说明",
+    "sec4_desc": "为实现体育赛事直播功能，应用仅在用户主动发起直播期间调用必要权限：",
+    "sec4_item1": "<strong>摄像头：</strong>仅在用户主动开启直播时采集赛场视频画面。",
+    "sec4_item2": "<strong>麦克风：</strong>仅在直播进行期间采集现场音频与解说。",
+    "sec4_item3": "<strong>网络访问权限：</strong>用于连接网络并向目标 RTMP 服务器传输直播数据包。",
+    "sec4_note": "直播未激活时，绝不在后台采集或传输任何音视频数据。",
+    "sec5_title": "5. YouTube API 集成条款",
+    "sec5_desc": "使用 Google 账号推流至 YouTube 时，用户须同时遵守 YouTube 服务条款及 Google 隐私政策。用户须对自身频道的直播内容与版权承担全部责任。",
+    "sec6_title": "6. 知识产权",
+    "sec6_desc": "Hoop Streamer 软件、商标、比分板设计、视觉元素和代码均归 <strong>Hoop Streamer Labs / José Luiz de Souza</strong> 独家所有，受国际知识产权法保护。",
+    "sec7_title": "7. 客户支持与联系方式",
+    "sec7_desc": "如有任何关于服务条款的疑问或技术支持需求，请直接联系开发者团队：",
+    "dev_resp": "责任开发者：José Luiz de Souza (Hoop Streamer Labs)",
+    "dev_email": "支持邮箱：",
+    "dev_loc": "所在地：巴西 圣卡塔琳娜州 圣若泽 (São José - SC)",
+    "dev_web": "官方网站：",
+    "footer_rights": "© 2026 Hoop Streamer. 由 JL Souza (Hoop Streamer Labs) 维护开发。保留所有权利。"
+  }
+};
+    const badgeImages = {
+  "pt": "https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png",
+  "en": "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
+  "es": "https://play.google.com/intl/en_us/badges/static/images/badges/es-419_badge_web_generic.png",
+  "fr": "https://play.google.com/intl/en_us/badges/static/images/badges/fr_badge_web_generic.png",
+  "de": "https://play.google.com/intl/en_us/badges/static/images/badges/de_badge_web_generic.png",
+  "zh": "https://play.google.com/intl/en_us/badges/static/images/badges/zh-cn_badge_web_generic.png"
+};
+
+    function changeLanguage(lang) {
+      const data = translations[lang];
+      if (!data) return;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key]) {
+          el.innerHTML = data[key];
+        }
+      });
+
+      const badgeImg = document.getElementById('playBadgeImg');
+      if (badgeImg && badgeImages[lang]) {
+        badgeImg.src = badgeImages[lang];
+      }
+
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : (lang === 'zh' ? 'zh-CN' : lang);
+
+      try { localStorage.setItem('hoop_lang', lang); } catch (e) {}
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      let saved = null;
+      try { saved = localStorage.getItem('hoop_lang'); } catch (e) {}
+
+      if (saved && translations[saved] && saved !== 'en') {
+        const sel = document.getElementById('langSelect');
+        if (sel) sel.value = saved;
+        changeLanguage(saved);
+        return;
+      }
+
+      let targetLang = 'pt';
+      const languages = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || 'pt'];
+      const hasPt = Array.from(languages).some(l => l.toLowerCase().startsWith('pt'));
+
+      if (!hasPt) {
+        const primary = (languages[0] || '').toLowerCase();
+        if (primary.startsWith('es')) targetLang = 'es';
+        else if (primary.startsWith('fr')) targetLang = 'fr';
+        else if (primary.startsWith('de')) targetLang = 'de';
+        else if (primary.startsWith('zh')) targetLang = 'zh';
+        else if (primary.startsWith('en')) {
+          if (saved === 'en') targetLang = 'en';
+          else targetLang = 'pt';
+        }
+      }
+
+      const sel = document.getElementById('langSelect');
+      if (sel) sel.value = targetLang;
+      changeLanguage(targetLang);
+    });
+  </script>
+
+</body>
+</html>
